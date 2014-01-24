@@ -74,6 +74,49 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
+--- !u!1 &126693072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: bab9c94493bf6b4408791d04fd963409, type: 2}
+  m_PrefabInternal: {fileID: 1485326512}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 126693074}
+  - 114: {fileID: 126693073}
+  m_Layer: 11
+  m_Name: ModeLogicPicker
+  m_TagString: ModeLogicPicker
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &126693073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: bab9c94493bf6b4408791d04fd963409,
+    type: 2}
+  m_PrefabInternal: {fileID: 1485326512}
+  m_GameObject: {fileID: 126693072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a52491022eed442be2ee361c3e2051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hybridSpawnManager: {fileID: 100000, guid: da1622ec8540c224d905119c82c24b5b, type: 2}
+  collectorSpawnManager: {fileID: 100000, guid: 2b67accbe6f210f47ae216165454905c,
+    type: 2}
+  shooterSpawnManager: {fileID: 100000, guid: d6bd1099730503e42a1031244e835442, type: 2}
+--- !u!4 &126693074
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: bab9c94493bf6b4408791d04fd963409, type: 2}
+  m_PrefabInternal: {fileID: 1485326512}
+  m_GameObject: {fileID: 126693072}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.76148701, y: -5.4183917, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &878881863
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +179,7 @@ GameObject:
   - 92: {fileID: 922232529}
   - 124: {fileID: 922232528}
   - 81: {fileID: 922232527}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -260,6 +303,46 @@ Prefab:
   m_RootGameObject: {fileID: 1675090291}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1001 &1485326512
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: bab9c94493bf6b4408791d04fd963409, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -8.76148701
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bab9c94493bf6b4408791d04fd963409, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -5.4183917
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bab9c94493bf6b4408791d04fd963409, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bab9c94493bf6b4408791d04fd963409, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bab9c94493bf6b4408791d04fd963409, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bab9c94493bf6b4408791d04fd963409, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: bab9c94493bf6b4408791d04fd963409, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: bab9c94493bf6b4408791d04fd963409, type: 2}
+  m_RootGameObject: {fileID: 126693072}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &1675090291
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +354,7 @@ GameObject:
   - 212: {fileID: 1675090293}
   - 114: {fileID: 1675090292}
   m_Layer: 9
-  m_Name: Player
+  m_Name: AggressivePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,7 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2a5718a116f05419f64ebc8348ebef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  moveSpeed: 5
   shot: {fileID: 0}
   angleModifier: .5
   angleInterpolatingInterval: .0160000008

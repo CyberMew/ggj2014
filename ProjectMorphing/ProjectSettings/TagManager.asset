@@ -6,6 +6,8 @@ TagManager:
   - 
   - Ditto
   - ModeLogicPicker
+  - Enemy
+  - Powerup
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   User Layer 9: Player
   User Layer 10: Enemy
   User Layer 11: Manager
-  User Layer 12: 
+  User Layer 12: Camera
   User Layer 13: 
   User Layer 14: 
   User Layer 15: 
