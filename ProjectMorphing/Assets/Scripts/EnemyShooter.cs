@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ShooterStatic : MonoBehaviour {
+public class EnemyShooter : MonoBehaviour {
 
 	public GameObject enemyProjectile;
 	public int splitCount;
