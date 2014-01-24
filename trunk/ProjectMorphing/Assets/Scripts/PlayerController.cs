@@ -31,10 +31,14 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Move()	{
-		float moveInputX = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
-		float moveInputY = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
-
-		transform.Translate (moveInputX,moveInputY,0,Space.World);
+		Vector2 moveVec = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+		float len = moveVec.magnitude;
+		if(len > 0f)
+		{
+			moveVec /= len;
+			moveVec *= Time.deltaTime * moveSpeed;
+			transform.Translate(moveVec.x, moveVec.y, 0f, Space.World);
+		}
 	}
 
 	void Shoot() {
