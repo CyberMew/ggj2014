@@ -282,15 +282,15 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: fe8a8d47aecf4544497e7efe9921246b, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: fe8a8d47aecf4544497e7efe9921246b, type: 2}
+    - target: {fileID: 0}
       propertyPath: angleModifier
       value: .5
       objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: fe8a8d47aecf4544497e7efe9921246b, type: 2}
+    - target: {fileID: 0}
       propertyPath: angleInterpolatingInterval
       value: .0160000008
       objectReference: {fileID: 0}
@@ -363,21 +363,15 @@ GameObject:
 --- !u!114 &1675090292
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: fe8a8d47aecf4544497e7efe9921246b,
+  m_PrefabParentObject: {fileID: 11400002, guid: fe8a8d47aecf4544497e7efe9921246b,
     type: 2}
   m_PrefabInternal: {fileID: 978708037}
   m_GameObject: {fileID: 1675090291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f2a5718a116f05419f64ebc8348ebef, type: 3}
+  m_Script: {fileID: 11500000, guid: e7f6059d9ae23ab4290d87130e3cdb10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  shot: {fileID: 0}
-  angleModifier: .5
-  angleInterpolatingInterval: .0160000008
-  fireRate: 0
-  targetAngle: 0
 --- !u!212 &1675090293
 SpriteRenderer:
   m_ObjectHideFlags: 0
