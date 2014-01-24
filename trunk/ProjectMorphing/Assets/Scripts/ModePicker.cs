@@ -17,7 +17,7 @@ public class ModePicker : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("Cannot find mode Hybrid Manager!");
+			Debug.Log("Cannot find Hybrid Manager!");
 		}
 
 		hybridManager.Activate();
@@ -32,7 +32,7 @@ public class ModePicker : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("Cannot find mode Shooter Manager!");
+			Debug.Log("Cannot find Shooter Manager!");
 		}
 
 		shooterManager.Activate();
@@ -47,7 +47,7 @@ public class ModePicker : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("Cannot find mode Hybrid Manager!");
+			Debug.Log("Cannot find Hybrid Manager!");
 		}
 
 		collectorManager.Activate();
