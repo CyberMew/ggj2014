@@ -5,8 +5,8 @@ public class ModePicker : MonoBehaviour
 {
 	private int shooter, collector, total;
 	public GameObject hybridSpawnManager, collectorSpawnManager, shooterSpawnManager;
-	private Vector3 vec3;
-	private Quaternion quat;
+	private Vector3 vec3 = new Vector3();
+	private Quaternion quat = new Quaternion();
 //	private HybridManager hybridManager;
 //	private ShooterManager shooterManager;
 //	private CollectorManager collectorManager;
