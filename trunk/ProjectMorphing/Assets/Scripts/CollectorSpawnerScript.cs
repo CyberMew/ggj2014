@@ -28,10 +28,10 @@ public class CollectorSpawnerScript : MonoBehaviour {
 	// 1024 x 768
 	void SpawnCollectable()
 	{
-		Vector2 spawnPosition;
+		Vector2 spawnPosition = new Vector2(0,0);
 
 		// randomly select one of the collectables to spawn
-		int arrayPos = Random.Range (0, collectableArray.GetLength()-1);
+		int arrayPos = Random.Range (0, collectableArray.Length-1);
 
 		// randomly find a position to spawn the collectable
 		// if collectable is colliding with anything, redo
