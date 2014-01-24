@@ -156,7 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
-  boundary: 14
+  rotateSpeed: 15
+  shot: {fileID: 0}
+  fireRate: 0
 --- !u!1 &878881863
 GameObject:
   m_ObjectHideFlags: 0
