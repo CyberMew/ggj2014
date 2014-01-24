@@ -4,55 +4,70 @@ using System.Collections;
 public class ModePicker : MonoBehaviour 
 {
 	private int shooter, collector, total;
-	private HybridManager hybridManager;
-	private ShooterManager shooterManager;
-	private CollectorManager collectorManager;
+	public GameObject hybridSpawnManager, collectorSpawnManager, shooterSpawnManager;
+	private Vector3 vec3;
+	private Quaternion quat;
+//	private HybridManager hybridManager;
+//	private ShooterManager shooterManager;
+//	private CollectorManager collectorManager;
+//
+//	void ActivateHybrid()
+//	{
+//		GameObject hybridManagerObject = GameObject.FindWithTag("HybridManager");
+//		if(hybridManagerObject)
+//		{
+//			hybridManager = hybridManagerObject.GetComponent<HybridManager>();
+//		}
+//		else
+//		{
+//			Debug.Log("Cannot find Hybrid Manager!");
+//		}
+//
+//		hybridManager.Activate();
+//	}
+//
+//	void ActivateShooter()
+//	{
+//		GameObject shooterManagerObject = GameObject.FindWithTag("ShooterManager");
+//		if(shooterManagerObject)
+//		{
+//			shooterManager = shooterManagerObject.GetComponent<ShooterManager>();
+//		}
+//		else
+//		{
+//			Debug.Log("Cannot find Shooter Manager!");
+//		}
+//
+//		shooterManager.Activate();
+//	}
+//
+//	void ActivateCollector()
+//	{
+//		GameObject collectorManagerObject = GameObject.FindWithTag("CollectorManager");
+//		if(collectorManagerObject)
+//		{
+//			collectorManager = collectorManagerObject.GetComponent<CollectorManager>();
+//		}
+//		else
+//		{
+//			Debug.Log("Cannot find Hybrid Manager!");
+//		}
+//
+//		collectorManager.Activate();
+//	}
 
-	void ActivateHybrid()
+	void CreateHybrid()
 	{
-		GameObject hybridManagerObject = GameObject.FindWithTag("HybridManager");
-		if(hybridManagerObject)
-		{
-			hybridManager = hybridManagerObject.GetComponent<HybridManager>();
-		}
-		else
-		{
-			Debug.Log("Cannot find Hybrid Manager!");
-		}
-
-		hybridManager.Activate();
+		Instantiate(hybridSpawnManager, vec3, quat);
 	}
-
-	void ActivateShooter()
+	void CreateShooter()
 	{
-		GameObject shooterManagerObject = GameObject.FindWithTag("ShooterManager");
-		if(shooterManagerObject)
-		{
-			shooterManager = shooterManagerObject.GetComponent<ShooterManager>();
-		}
-		else
-		{
-			Debug.Log("Cannot find Shooter Manager!");
-		}
-
-		shooterManager.Activate();
+		Instantiate(shooterSpawnManager, vec3, quat);
 	}
-
-	void ActivateCollector()
+	void CreateCollector()
 	{
-		GameObject collectorManagerObject = GameObject.FindWithTag("CollectorManager");
-		if(collectorManagerObject)
-		{
-			collectorManager = collectorManagerObject.GetComponent<CollectorManager>();
-		}
-		else
-		{
-			Debug.Log("Cannot find Hybrid Manager!");
-		}
-
-		collectorManager.Activate();
+		Instantiate(collectorSpawnManager, vec3, quat);
 	}
-
 	void Update()
 	{
 		switch(total)
@@ -80,17 +95,17 @@ public class ModePicker : MonoBehaviour
 				// start hybrid
 				if(shooter == collector)
 				{
-					ActivateHybrid();
+					CreateHybrid();
 				}
 				// start shooter
 				else if(shooter == total)
 				{
-					ActivateShooter();
+					CreateShooter();
 				}
 				// start collector
 				else
 				{
-					ActivateCollector();
+					CreateCollector();
 				}
 				break;
 			}
