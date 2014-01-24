@@ -38,6 +38,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab72e3b488a73b34a94cdfbb2c3a1219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectibleArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  collectibleSpawnChanceArray:
+  - .25
+  - .25
+  - .25
+  - .25
+  obstacleArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  obstacleSpawnChanceArray: []
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
