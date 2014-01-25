@@ -84,7 +84,7 @@ public class HybridSpawnScript : MonoBehaviour {
 
 
 	// spawn an enemy based on the index given
-	void SpawnEnemy(int enemyIndex)
+	public void SpawnEnemy(int enemyIndex)
 	{
 		SpawnTemplate.SpawnObject (ref enemyArray [enemyIndex], sqDistFromPlayer);
 	}
