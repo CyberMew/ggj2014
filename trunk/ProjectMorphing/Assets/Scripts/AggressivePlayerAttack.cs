@@ -9,7 +9,7 @@ public class AggressivePlayerAttack : MonoBehaviour {
 
 	private bool canAttack = true;
 	public GameObject bulletObject = null;
-	public float bulletFrontOffset = 2f;
+	public float bulletFrontOffset = 0.5f;
 
 	// Use this for initialization
 	void Start () {
@@ -55,7 +55,7 @@ public class AggressivePlayerAttack : MonoBehaviour {
 		}
 		
 		// else if any condition fails we just do range attack
-		Vector4 vec = (transform.localToWorldMatrix * new Vector4(bulletFrontOffset, 0f, 0f, 1f));
+		Vector4 vec = (transform.localToWorldMatrix * new Vector4(bulletFrontOffset, 0f, 0f, 0f));
 		Instantiate(bulletObject, transform.position + new Vector3(vec.x, vec.y, vec.z), Quaternion.identity);
   }
   
