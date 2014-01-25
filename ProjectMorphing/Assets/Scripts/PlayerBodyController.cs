@@ -22,7 +22,7 @@ public class PlayerBodyController : MonoBehaviour {
 			colliderSize = circleCollider.transform.TransformDirection(new Vector3(colliderSize, 0f, 0f)).magnitude;
 		}
 		
-		colliderSize *= 2f;
+		colliderSize *= 1.4f;
 		Destroy(tempBody);
 
 		positionHistory.Add (transform.position);
