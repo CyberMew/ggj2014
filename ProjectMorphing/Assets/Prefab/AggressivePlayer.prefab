@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   - 58: {fileID: 5800002}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AggressivePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
