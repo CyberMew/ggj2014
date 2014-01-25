@@ -38,10 +38,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a52491022eed442be2ee361c3e2051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_GameMode: 0
   hybridSpawnManager: {fileID: 100000, guid: da1622ec8540c224d905119c82c24b5b, type: 2}
   collectorSpawnManager: {fileID: 100000, guid: 2b67accbe6f210f47ae216165454905c,
     type: 2}
   shooterSpawnManager: {fileID: 100000, guid: d6bd1099730503e42a1031244e835442, type: 2}
+  dittoPos1: {x: -3, y: 2, z: 0}
+  dittoPos2: {x: 3, y: 2, z: 0}
+  plauerPos: {x: 0, y: -2, z: 0}
+  dittoObject: {fileID: 100000, guid: 9f58f3cf04dc191438198505201265ac, type: 2}
+  aggresivePlayer: {fileID: 100000, guid: fe8a8d47aecf4544497e7efe9921246b, type: 2}
+  collectorPlayer: {fileID: 100000, guid: fe8a8d47aecf4544497e7efe9921246b, type: 2}
+  hybridPlayer: {fileID: 100000, guid: fe8a8d47aecf4544497e7efe9921246b, type: 2}
+  initialPlayer: {fileID: 100000, guid: fe8a8d47aecf4544497e7efe9921246b, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
