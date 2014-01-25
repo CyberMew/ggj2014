@@ -13,7 +13,7 @@ public class PlayerShield : MonoBehaviour
 		gameObject.SetActive (isShieldUp);
 	}
 
-	void OnTriggerEnter2D(Collision2D other)
+	void OnTriggerEnter2D(Collider2D other)
 	{
 		if(isShieldUp)
 		{

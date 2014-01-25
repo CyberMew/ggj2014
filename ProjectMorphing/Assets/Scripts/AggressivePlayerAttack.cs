@@ -13,6 +13,22 @@ public class AggressivePlayerAttack : MonoBehaviour {
 
 	public float baseBulletSpeed = 0.15f;
 
+	private bool isHasted = false;
+	private float hasteDuration = 10f;
+	
+	public void SetIsHasted(float duration)
+	{
+		StopAllCoroutines();
+		hasteDuration = duration;
+		isHasted = true;
+	}
+	
+	IEnumerator RemoveHaste()
+	{
+		yield return new WaitForSeconds(hasteDuration);
+		cooldownBuffModifier = 1f;
+	}
+
 	// Use this for initialization
 	void Start () {
 		
@@ -24,6 +40,10 @@ public class AggressivePlayerAttack : MonoBehaviour {
 		if(Input.GetButton("Fire"))
 		{
 			Attack();
+		}
+		if(isHasted)
+		{
+			StartCoroutine("RemoveHaste");
 		}
 	}
 

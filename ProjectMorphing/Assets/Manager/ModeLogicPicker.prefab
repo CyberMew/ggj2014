@@ -45,12 +45,12 @@ MonoBehaviour:
   shooterSpawnManager: {fileID: 100000, guid: d6bd1099730503e42a1031244e835442, type: 2}
   dittoPos1: {x: -3, y: 2, z: 0}
   dittoPos2: {x: 3, y: 2, z: 0}
-  plauerPos: {x: 0, y: -2, z: 0}
+  playerPos: {x: 0, y: -2, z: 0}
   dittoObject: {fileID: 100000, guid: 9f58f3cf04dc191438198505201265ac, type: 2}
-  aggresivePlayer: {fileID: 100000, guid: fe8a8d47aecf4544497e7efe9921246b, type: 2}
-  collectorPlayer: {fileID: 100000, guid: fe8a8d47aecf4544497e7efe9921246b, type: 2}
-  hybridPlayer: {fileID: 100000, guid: fe8a8d47aecf4544497e7efe9921246b, type: 2}
-  initialPlayer: {fileID: 100000, guid: fe8a8d47aecf4544497e7efe9921246b, type: 2}
+  aggresivePlayer: {fileID: 100004, guid: fe8a8d47aecf4544497e7efe9921246b, type: 2}
+  collectorPlayer: {fileID: 100004, guid: fe8a8d47aecf4544497e7efe9921246b, type: 2}
+  hybridPlayer: {fileID: 100002, guid: 06b18ffdd0b76f14699c67beef9c26e9, type: 2}
+  initialPlayer: {fileID: 100004, guid: fe8a8d47aecf4544497e7efe9921246b, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
