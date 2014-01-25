@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
-public class TotalCount
+public class TotalCountShooter
 {	
 	public int firstCount = 0;
 	public int secondCount = 0;
@@ -11,15 +11,15 @@ public class TotalCount
 	public int fourthCount = 0;
 }
 
-public enum WAVEACTION
-{
-	SPAWN_EASY_WAVE,
-	SPAWN_MEDIUM_WAVE,
-	SPAWN_HARD_WAVE,
-	DELAY_MIN_DURATION,
-	DELAY_MAX_DURATION,
-	DELAY_RAND_DURATION
-}
+//public enum WAVEACTION
+//{
+//	SPAWN_EASY_WAVE,
+//	SPAWN_MEDIUM_WAVE,
+//	SPAWN_HARD_WAVE,
+//	DELAY_MIN_DURATION,
+//	DELAY_MAX_DURATION,
+//	DELAY_RAND_DURATION
+//}
 
 public class ShooterWaveScript : MonoBehaviour {
 
@@ -42,22 +42,22 @@ public class ShooterWaveScript : MonoBehaviour {
 
 	private Queue<WAVEACTION> waveActionQueue = new Queue<WAVEACTION>();
 	
-	public TotalCount[] EasyWavesVariants;
-	public TotalCount[] MediumWavesVariants;
-	public TotalCount[] HardWavesVariants;
+	public TotalCountShooter[] EasyWavesVariants;
+	public TotalCountShooter[] MediumWavesVariants;
+	public TotalCountShooter[] HardWavesVariants;
 
 	// Use this for initialization
 	void Start () {
 		spawnManager = (GameObject)Instantiate (masterShooterSpawnManager, new Vector3 (), Quaternion.identity);
 
 		// initialize arrays
-		foreach(TotalCount tc in EasyWavesVariants)
+		foreach(TotalCountShooter tc in EasyWavesVariants)
 			listOfEasyWaves.Add(() => Spawn (tc.firstCount, tc.secondCount, tc.thirdCount, tc.fourthCount));
 
-		foreach(TotalCount tc in HardWavesVariants)
+		foreach(TotalCountShooter tc in HardWavesVariants)
 			listOfMediumWaves.Add(() => Spawn (tc.firstCount, tc.secondCount, tc.thirdCount, tc.fourthCount));
 
-		foreach(TotalCount tc in HardWavesVariants)
+		foreach(TotalCountShooter tc in HardWavesVariants)
 			listOfHardWaves.Add(() => Spawn (tc.firstCount, tc.secondCount, tc.thirdCount, tc.fourthCount));
 
 		// Convert the array to Queue
