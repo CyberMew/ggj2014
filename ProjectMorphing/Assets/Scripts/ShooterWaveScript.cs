@@ -73,39 +73,42 @@ public class ShooterWaveScript : MonoBehaviour {
 		// wait the initial delay
 		yield return new WaitForSeconds (initialDelay);
 
-		// while queue still has actions within
-		if (waveActionQueue.Count > 0) {
+		while (true) {
 
-			switch(waveActionQueue.Dequeue())
-			{
-			case WAVEACTION.SPAWN_EASY_WAVE:
-				listOfEasyWaves[Random.Range(0,listOfEasyWaves.Count-1)]();
-				//Debug.Log("Spawning Easy Wave");
-				break;
-			case WAVEACTION.SPAWN_MEDIUM_WAVE:
-				listOfMediumWaves[Random.Range(0,listOfMediumWaves.Count-1)]();
-				//Debug.Log("Spawning Medium Wave");
-				break;
-			case WAVEACTION.SPAWN_HARD_WAVE:
-				listOfHardWaves[Random.Range(0,listOfHardWaves.Count-1)]();
-				//Debug.Log("Spawning Hard Wave");
-				break;
-			case WAVEACTION.DELAY_MIN_DURATION:
-				yield return new WaitForSeconds (minSpawnDelay);
-				break;
-			case WAVEACTION.DELAY_MAX_DURATION:
-				yield return new WaitForSeconds (maxSpawnDelay);
-				break;
-			case WAVEACTION.DELAY_RAND_DURATION:
-				yield return new WaitForSeconds (Random.Range(minSpawnDelay, maxSpawnDelay));
-				break;
+			// while queue still has actions within
+			if (waveActionQueue.Count > 0) {
+				
+				switch(waveActionQueue.Dequeue())
+				{
+				case WAVEACTION.SPAWN_EASY_WAVE:
+					listOfEasyWaves[Random.Range(0,listOfEasyWaves.Count-1)]();
+					//Debug.Log("Spawning Easy Wave");
+					break;
+				case WAVEACTION.SPAWN_MEDIUM_WAVE:
+					listOfMediumWaves[Random.Range(0,listOfMediumWaves.Count-1)]();
+					//Debug.Log("Spawning Medium Wave");
+					break;
+				case WAVEACTION.SPAWN_HARD_WAVE:
+					listOfHardWaves[Random.Range(0,listOfHardWaves.Count-1)]();
+					//Debug.Log("Spawning Hard Wave");
+					break;
+				case WAVEACTION.DELAY_MIN_DURATION:
+					yield return new WaitForSeconds (minSpawnDelay);
+					break;
+				case WAVEACTION.DELAY_MAX_DURATION:
+					yield return new WaitForSeconds (maxSpawnDelay);
+					break;
+				case WAVEACTION.DELAY_RAND_DURATION:
+					yield return new WaitForSeconds (Random.Range(minSpawnDelay, maxSpawnDelay));
+					break;
+				}
+				
 			}
-
-		}
-		// if queue has no more actions, simply spawn hard waves for random seconds
-		else {
-			yield return new WaitForSeconds (Random.Range(minSpawnDelay, maxSpawnDelay));
-			listOfHardWaves[Random.Range(0,listOfHardWaves.Count-1)]();
+			// if queue has no more actions, simply spawn hard waves for random seconds
+			else {
+				yield return new WaitForSeconds (Random.Range(minSpawnDelay, maxSpawnDelay));
+				listOfHardWaves[Random.Range(0,listOfHardWaves.Count-1)]();
+			}
 		}
 
 	}
