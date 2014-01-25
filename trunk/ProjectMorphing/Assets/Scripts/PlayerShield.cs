@@ -6,7 +6,7 @@ public class PlayerShield : MonoBehaviour
 	public float invulnerableTime = 3f;
 
 	private float curInvulTime = 0f;
-	private bool isShieldUp = true;
+	private bool isShieldUp = false;
 	
 	void Start() {
 		gameObject.SetActive (isShieldUp);
