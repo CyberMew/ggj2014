@@ -11,7 +11,7 @@ public class AggressivePlayerAttack : MonoBehaviour {
 	public GameObject bulletObject = null;
 	public float bulletFrontOffset = 0.5f;
 
-	public float baseBulletSpeed = 1f;
+	public float baseBulletSpeed = 0.15f;
 
 	// Use this for initialization
 	void Start () {
@@ -56,7 +56,7 @@ public class AggressivePlayerAttack : MonoBehaviour {
 			}
 		}
 		
-		// else if any condition fails we just do range attack
+		// else if above checks fail, we just do range attack
 		Vector4 vec = (transform.localToWorldMatrix * new Vector4(bulletFrontOffset, 0f, 0f, 0f));
 		GameObject myBullet = Instantiate(bulletObject, transform.position + new Vector3(vec.x, vec.y, vec.z), transform.rotation) as GameObject;
 
