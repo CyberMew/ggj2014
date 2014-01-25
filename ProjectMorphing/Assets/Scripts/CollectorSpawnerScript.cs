@@ -34,13 +34,6 @@ public class CollectorSpawnerScript : MonoBehaviour {
 		else if(totalObstaclePercentage < 1.0f)
 			Debug.Log ("CollectorSpawnScript::Start() - total combined percentage for obstacle spawn chance is less than 1!");
 
-
-//		for (int i = 0; i < 50; ++i)
-//						SpawnCollectible ();
-
-		for (int i = 0; i < 30; ++i)
-			SpawnObstacle ();
-		
 	}
 
 	// create obstacle
@@ -49,7 +42,7 @@ public class CollectorSpawnerScript : MonoBehaviour {
 	// obstacles remove themselves periodically
 	// calls for new obstacles to be created after delay X
 	// change obstacle count every Y seconds
-	void SpawnObstacle()
+	public void SpawnObstacle()
 	{
 		Vector2 screenPosition = new Vector2(Random.Range(MySystem.edgeLeft,MySystem.edgeRight), Random.Range(MySystem.edgeBottom,MySystem.edgeTop));
 		Vector3 spawnPosition = new Vector3(screenPosition.x, screenPosition.y, 0f);
@@ -114,7 +107,7 @@ public class CollectorSpawnerScript : MonoBehaviour {
 	// collectables will spawn 1 by 1
 	// after a collectable gets taken, collectable will have a onDestroy that calls this function and 
 	// the winlose manager's ReduceObjectCount
-	void SpawnCollectible()
+	public void SpawnCollectible()
 	{
 		Vector2 screenPosition = new Vector2(Random.Range(MySystem.edgeLeft,MySystem.edgeRight), Random.Range(MySystem.edgeBottom,MySystem.edgeTop));
 		Vector3 spawnPosition = new Vector3(screenPosition.x, screenPosition.y, 0f);
