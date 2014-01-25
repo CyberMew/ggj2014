@@ -18,17 +18,20 @@ public class DittoContact : MonoBehaviour
 		}
 	}
 
-	void OnTriggerEnter(Collider other)
+	void OnTriggerEnter2D(Collider2D other)
 	{
 		if(other.tag == "Player")
 		{
 			// add to collect mode
 			modePicker.AddToCollector();
+			Destroy(gameObject);
 		}
 		else if(other.tag == "PlayerProjectile")
 		{
 			// add to projectile mode
 			modePicker.AddToShooter();
+			Destroy(gameObject);
+			Destroy(other.gameObject);
 		}
 	}
 }
