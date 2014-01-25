@@ -41,42 +41,34 @@ MonoBehaviour:
   masterShooterSpawnManager: {fileID: 100000, guid: d6bd1099730503e42a1031244e835442,
     type: 2}
   initialDelay: 3
-  minDelayBeforeSpawn: 3
-  maxDelayBeforeSpawn: 8
-  orderToSpawn: 000000000100000002000000020000000200000002000000020000000000000002000000010000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000020000000200000002000000
-  EasyWavesVarients:
+  minSpawnDelay: 1
+  maxSpawnDelay: 5
+  waveActionOrder: 00000000030000000300000003000000000000000000000005000000000000000000000000000000
+  EasyWavesVariants:
   - firstCount: 5
     secondCount: 0
     thirdCount: 0
     fourthCount: 0
-  - firstCount: 0
-    secondCount: 5
+  - firstCount: 4
+    secondCount: 1
     thirdCount: 0
     fourthCount: 0
   - firstCount: 3
+    secondCount: 2
+    thirdCount: 0
+    fourthCount: 0
+  - firstCount: 2
     secondCount: 3
     thirdCount: 0
     fourthCount: 0
-  - firstCount: 2
+  - firstCount: 1
     secondCount: 4
     thirdCount: 0
     fourthCount: 0
-  - firstCount: 4
-    secondCount: 2
-    thirdCount: 0
-    fourthCount: 0
-  MediumWavesVarients:
-  - firstCount: 4
-    secondCount: 2
-    thirdCount: 1
-    fourthCount: 0
+  MediumWavesVariants:
   - firstCount: 3
     secondCount: 2
     thirdCount: 2
-    fourthCount: 0
-  - firstCount: 2
-    secondCount: 4
-    thirdCount: 1
     fourthCount: 0
   - firstCount: 2
     secondCount: 3
@@ -86,18 +78,22 @@ MonoBehaviour:
     secondCount: 2
     thirdCount: 3
     fourthCount: 0
-  HardWavesVarients:
+  - firstCount: 1
+    secondCount: 3
+    thirdCount: 3
+    fourthCount: 0
   - firstCount: 0
     secondCount: 4
     thirdCount: 3
-    fourthCount: 2
+    fourthCount: 0
+  HardWavesVariants:
   - firstCount: 0
     secondCount: 3
+    thirdCount: 3
+    fourthCount: 3
+  - firstCount: 0
+    secondCount: 2
     thirdCount: 4
-    fourthCount: 2
-  - firstCount: 0
-    secondCount: 3
-    thirdCount: 3
     fourthCount: 3
   - firstCount: 0
     secondCount: 2
@@ -106,6 +102,10 @@ MonoBehaviour:
   - firstCount: 0
     secondCount: 1
     thirdCount: 4
+    fourthCount: 4
+  - firstCount: 0
+    secondCount: 0
+    thirdCount: 5
     fourthCount: 4
 --- !u!1001 &100100000
 Prefab:
