@@ -11,6 +11,16 @@ public class TotalCount
 	public int fourthCount = 0;
 }
 
+public enum WAVEACTION
+{
+	SPAWN_EASY_WAVE,
+	SPAWN_MEDIUM_WAVE,
+	SPAWN_HARD_WAVE,
+	DELAY_MIN_DURATION,
+	DELAY_MAX_DURATION,
+	DELAY_RAND_DURATION
+}
+
 public class ShooterWaveScript : MonoBehaviour {
 
 	public GameObject masterShooterSpawnManager;
@@ -26,144 +36,94 @@ public class ShooterWaveScript : MonoBehaviour {
 	private List<WaveDelegate> listOfHardWaves = new List<WaveDelegate>();
 
 	public float initialDelay;
-	public float minDelayBeforeSpawn;
-	public float maxDelayBeforeSpawn;
-	public ENEMYDIFFICULTY[] orderToSpawn;
+	public float minSpawnDelay;
+	public float maxSpawnDelay;
+	public WAVEACTION[] waveActionOrder;
+
+	private Queue<WAVEACTION> waveActionQueue = new Queue<WAVEACTION>();
 	
-	private float spawnTimer = 0f;
-	private Queue<ENEMYDIFFICULTY> spawnOrder = new Queue<ENEMYDIFFICULTY>();
-	
-	public TotalCount[] EasyWavesVarients;
-	public TotalCount[] MediumWavesVarients;
-	public TotalCount[] HardWavesVarients;
+	public TotalCount[] EasyWavesVariants;
+	public TotalCount[] MediumWavesVariants;
+	public TotalCount[] HardWavesVariants;
 
 	// Use this for initialization
 	void Start () {
 		spawnManager = (GameObject)Instantiate (masterShooterSpawnManager, new Vector3 (), Quaternion.identity);
 
 		// initialize arrays
-		//int index = 0;
-		/*listOfEasyWaves.Add(() => Spawn (5,0));
-		listOfEasyWaves.Add(() => Spawn (0,5));
-		listOfEasyWaves.Add(() => Spawn (3,3));
-		listOfEasyWaves.Add(() => Spawn (2,4));
-		listOfEasyWaves.Add(() => Spawn (4,2));*/
-		foreach(TotalCount tc in EasyWavesVarients)
-		{
+		foreach(TotalCount tc in EasyWavesVariants)
 			listOfEasyWaves.Add(() => Spawn (tc.firstCount, tc.secondCount, tc.thirdCount, tc.fourthCount));
-		}
-		/*arrayOfEasyWaves [index++] = (() => Spawn (5,0));
-		arrayOfEasyWaves [index++] = (() => Spawn (0,5));
-		arrayOfEasyWaves [index++] = (() => Spawn (3,3));
-		arrayOfEasyWaves [index++] = (() => Spawn (2,4));
-		arrayOfEasyWaves [index++] = (() => Spawn (4,2));*/
 
-
-
-		//index = 0;
-		/*listOfMediumWaves.Add(() => Spawn (4,2,1));
-		listOfMediumWaves.Add(() => Spawn (3,2,2));
-		listOfMediumWaves.Add(() => Spawn (2,4,1));
-		listOfMediumWaves.Add(() => Spawn (2,3,2));
-		listOfMediumWaves.Add(() => Spawn (2,2,3));*/
-		foreach(TotalCount tc in HardWavesVarients)
-		{
+		foreach(TotalCount tc in HardWavesVariants)
 			listOfMediumWaves.Add(() => Spawn (tc.firstCount, tc.secondCount, tc.thirdCount, tc.fourthCount));
-		}
-		/*
-		arrayOfMediumWaves[index++] = (() => Spawn (4,2,1));
-		arrayOfMediumWaves[index++] = (() => Spawn (3,2,2));
-		arrayOfMediumWaves[index++] = (() => Spawn (2,4,1));
-		arrayOfMediumWaves[index++] = (() => Spawn (2,3,2));
-		arrayOfMediumWaves[index++] = (() => Spawn (2,2,3));*/
 
-		
-		/*listOfHardWaves.Add(() => Spawn (0,4,3,2));
-		listOfHardWaves.Add(() => Spawn (0,3,4,2));
-		listOfHardWaves.Add(() => Spawn (0,3,3,3));
-		listOfHardWaves.Add(() => Spawn (0,2,3,4));
-		listOfHardWaves.Add(() => Spawn (0,1,4,4));*/
-		foreach(TotalCount tc in HardWavesVarients)
-		{
+		foreach(TotalCount tc in HardWavesVariants)
 			listOfHardWaves.Add(() => Spawn (tc.firstCount, tc.secondCount, tc.thirdCount, tc.fourthCount));
-		}
-		/*index = 0;
-		arrayOfHardWaves[index++] = (() => Spawn (0,4,3,2));
-		arrayOfHardWaves[index++] = (() => Spawn (0,3,4,2));
-		arrayOfHardWaves[index++] = (() => Spawn (0,3,3,3));
-		arrayOfHardWaves[index++] = (() => Spawn (0,2,3,4));
-		arrayOfHardWaves[index++] = (() => Spawn (0,1,4,4));*/
-
-		// Set initial spawn time
-		spawnTimer = initialDelay;
 
 		// Convert the array to Queue
-		foreach(ENEMYDIFFICULTY diff in orderToSpawn)
-		{
-			spawnOrder.Enqueue(diff);
-		}
+		foreach(WAVEACTION diff in waveActionOrder)
+			waveActionQueue.Enqueue(diff);
+
+		StartCoroutine (WaveSpawning ());
 	}
 
-	
-/*---------------------------------------------------------------------------------------------------------------------------*/
 
-	void Spawn(int firstCount, int secondCount = 0, int thirdCount = 0, int fourthCount = 0)
+	IEnumerator WaveSpawning()
 	{
-		for(int i = 0; i < firstCount; ++i)
-				spawnManager.GetComponent<ShooterSpawnScript> ().SpawnEnemy (0);
+		// wait the initial delay
+		yield return new WaitForSeconds (initialDelay);
 
-		for(int i = 0; i < secondCount; ++i)
-				spawnManager.GetComponent<ShooterSpawnScript> ().SpawnEnemy (1);
+		// while queue still has actions within
+		if (waveActionQueue.Count > 0) {
 
-		for(int i = 0; i < thirdCount; ++i)
-			spawnManager.GetComponent<ShooterSpawnScript> ().SpawnEnemy (2);
-		
-		for(int i = 0; i < fourthCount; ++i)
-			spawnManager.GetComponent<ShooterSpawnScript> ().SpawnEnemy (3);
-	}
-
-	public enum ENEMYDIFFICULTY
-	{
-		EASY,
-		MEDIUM,
-		HARD
-	}
-
-	void Update()
-	{
-		/*if(Input.GetKeyDown(KeyCode.E))
-		{
-			Debug.Log("Calling a set of easy wave");
-			int index = Random.Range(0,4);
-			listOfEasyWaves[index]();
-		}*/
-
-		spawnTimer -= Time.deltaTime;
-		if(spawnTimer < 0f && spawnOrder.Count > 0)
-		{
-			// Reset the timer for next spawn
-			spawnTimer = Random.Range(minDelayBeforeSpawn, maxDelayBeforeSpawn);
-
-			int index = 0;
-			// Actually spawn some wave
-			switch(spawnOrder.Dequeue())
+			switch(waveActionQueue.Dequeue())
 			{
-			case ENEMYDIFFICULTY.EASY:
-				index = Random.Range(0,listOfEasyWaves.Count);
-				listOfEasyWaves[index]();
-				Debug.Log("Spawning Easy Wave");
+			case WAVEACTION.SPAWN_EASY_WAVE:
+				listOfEasyWaves[Random.Range(0,listOfEasyWaves.Count-1)]();
+				//Debug.Log("Spawning Easy Wave");
 				break;
-			case ENEMYDIFFICULTY.MEDIUM:
-				index = Random.Range(0,listOfMediumWaves.Count);
-				listOfMediumWaves[index]();
-				Debug.Log("Spawning Medium Wave");
+			case WAVEACTION.SPAWN_MEDIUM_WAVE:
+				listOfMediumWaves[Random.Range(0,listOfMediumWaves.Count-1)]();
+				//Debug.Log("Spawning Medium Wave");
 				break;
-			case ENEMYDIFFICULTY.HARD:
-				index = Random.Range(0,listOfHardWaves.Count);
-				listOfHardWaves[index]();
-				Debug.Log("Spawning Hard Wave");
+			case WAVEACTION.SPAWN_HARD_WAVE:
+				listOfHardWaves[Random.Range(0,listOfHardWaves.Count-1)]();
+				//Debug.Log("Spawning Hard Wave");
+				break;
+			case WAVEACTION.DELAY_MIN_DURATION:
+				yield return new WaitForSeconds (minSpawnDelay);
+				break;
+			case WAVEACTION.DELAY_MAX_DURATION:
+				yield return new WaitForSeconds (maxSpawnDelay);
+				break;
+			case WAVEACTION.DELAY_RAND_DURATION:
+				yield return new WaitForSeconds (Random.Range(minSpawnDelay, maxSpawnDelay));
 				break;
 			}
+
 		}
+		// if queue has no more actions, simply spawn hard waves for random seconds
+		else {
+			yield return new WaitForSeconds (Random.Range(minSpawnDelay, maxSpawnDelay));
+			listOfHardWaves[Random.Range(0,listOfHardWaves.Count-1)]();
+		}
+
 	}
+
+
+	void Spawn(int firstObjCount, int secondObjCount = 0, int thirdObjCount = 0, int fourthObjCount = 0)
+	{
+		for(int i = 0; i < firstObjCount; ++i)
+			spawnManager.GetComponent<ShooterSpawnScript> ().SpawnEnemy (0);
+
+		for(int i = 0; i < secondObjCount; ++i)
+			spawnManager.GetComponent<ShooterSpawnScript> ().SpawnEnemy (1);
+
+		for(int i = 0; i < thirdObjCount; ++i)
+			spawnManager.GetComponent<ShooterSpawnScript> ().SpawnEnemy (2);
+		
+		for(int i = 0; i < fourthObjCount; ++i)
+			spawnManager.GetComponent<ShooterSpawnScript> ().SpawnEnemy (3);
+	}
+	
 }
