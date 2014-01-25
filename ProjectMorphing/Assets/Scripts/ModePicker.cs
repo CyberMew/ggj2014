@@ -3,10 +3,6 @@ using System.Collections;
 
 public class ModePicker : MonoBehaviour 
 {
-
-
-
-
 	public enum GAME_MODE
 	{
 		IDLE,
@@ -15,8 +11,6 @@ public class ModePicker : MonoBehaviour
 		HYBIRD
 	}
 	public GAME_MODE m_GameMode = GAME_MODE.IDLE;
-
-
 	private int shooter, collector, total;
 	public GameObject hybridSpawnManager, collectorSpawnManager, shooterSpawnManager;
 	private Vector3 vec3 = new Vector3();
@@ -70,21 +64,71 @@ public class ModePicker : MonoBehaviour
 //		collectorManager.Activate();
 //	}
 
+	public Vector3 dittoPos1 = new Vector3(-3, 2f, 0f);
+	public Vector3 dittoPos2 = new Vector3(3f, 2f, 0f);
+	public Vector3 plauerPos = new Vector3(0f, -2f, 0f);
+	public GameObject dittoObject;
+	public GameObject aggresivePlayer;
+	public GameObject collectorPlayer;
+	public GameObject hybridPlayer;
+	//private GameObject currentPlayer;
+	private bool modeChosen = false;
+	public GameObject initialPlayer;
+
+	void Start()
+	{
+//		currentPlayer = GameObject.FindGameObjectWithTag("Player");
+//		if(!currentPlayer)
+//		{
+//			Debug.Log ("Player can't be found!");
+//		}
+		Instantiate(initialPlayer, plauerPos, Quaternion.identity);
+		Instantiate(dittoObject, dittoPos1, Quaternion.identity);
+		Instantiate(dittoObject, dittoPos2, Quaternion.identity);
+	}
+
 	void CreateHybrid()
 	{
+		//Instantiate(hybridPlayer, currentPlayer.transform.position, currentPlayer.transform.rotation);
+		initialPlayer.SetActive(false);
+		DestroyImmediate (initialPlayer.gameObject, true);
+		Debug.Log("made a baby");
+//		if(!currentPlayer)
+//		{
+//			Debug.Log("boom!");
+//		}
 		Instantiate(hybridSpawnManager, vec3, quat);
 	}
 	void CreateShooter()
 	{
+		//Instantiate(aggresivePlayer, currentPlayer.transform.position, currentPlayer.transform.rotation);
+		Debug.Log("made a baby");
+		initialPlayer.SetActive(false);
+		DestroyImmediate (initialPlayer.gameObject, true);
+//		if(!currentPlayer)
+//		{
+//			Debug.Log("boom!");
+//		}
 		Instantiate(shooterSpawnManager, vec3, quat);
 	}
 	void CreateCollector()
 	{
+		//Instantiate(collectorPlayer, currentPlayer.transform.position, currentPlayer.transform.rotation);
+		Debug.Log("made a baby");
+		initialPlayer.SetActive(false);
+		DestroyImmediate (initialPlayer.gameObject, true);
+//		if(!currentPlayer)
+//		{
+//			Debug.Log("boom!");
+//		}
 		Instantiate(collectorSpawnManager, vec3, quat);
 	}
 	void Update()
 	{
-
+		if(modeChosen)
+		{
+			return;
+		}
 		if(Input.GetKeyDown(KeyCode.T))
 		{ 
 			++m_GameMode;
@@ -116,18 +160,21 @@ public class ModePicker : MonoBehaviour
 				// start hybrid
 				if(shooter == collector)
 				{
+					modeChosen = true;
 					CreateHybrid();
 					m_GameMode = GAME_MODE.HYBIRD;
 				}
 				// start shooter
 				else if(shooter == total)
 				{
+					modeChosen = true;
 					CreateShooter();
 					m_GameMode = GAME_MODE.SHOOTER;
 				}
 				// start collector
 				else
 				{
+					modeChosen = true;
 					CreateCollector();
 					m_GameMode = GAME_MODE.COLLECTOR;
 				}
@@ -149,6 +196,7 @@ public class ModePicker : MonoBehaviour
 
 	public void AddToCollector()
 	{
+		
 		++collector;
 		++total;
 	}
