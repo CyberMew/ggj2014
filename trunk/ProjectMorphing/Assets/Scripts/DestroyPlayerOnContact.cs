@@ -5,7 +5,7 @@ using System.Collections;
 
 public class DestroyPlayerOnContact : MonoBehaviour 
 {
-	void OnTriggerEnter(Collider other)
+	void OnTriggerEnter2D(Collider2D other)
 	{
 		Debug.Log("fuck dis");
 		if(other.tag == "Player")
