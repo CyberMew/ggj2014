@@ -149,17 +149,17 @@ public class ShooterWaveScript : MonoBehaviour {
 			switch(spawnOrder.Dequeue())
 			{
 			case ENEMYDIFFICULTY.EASY:
-				index = Random.Range(0,4);
+				index = Random.Range(0,listOfEasyWaves.Count);
 				listOfEasyWaves[index]();
 				Debug.Log("Spawning Easy Wave");
 				break;
 			case ENEMYDIFFICULTY.MEDIUM:
-				index = Random.Range(0,4);
+				index = Random.Range(0,listOfMediumWaves.Count);
 				listOfMediumWaves[index]();
 				Debug.Log("Spawning Medium Wave");
 				break;
 			case ENEMYDIFFICULTY.HARD:
-				index = Random.Range(0,4);
+				index = Random.Range(0,listOfHardWaves.Count);
 				listOfHardWaves[index]();
 				Debug.Log("Spawning Hard Wave");
 				break;
