@@ -9,7 +9,22 @@ public class AggressivePlayerMovement : MonoBehaviour {
 	public float angleInterpolatingInterval = 0.016f;
 	public float targetAngle = 0f;
 	private float size = 1f;
-	
+	private bool isHasted = false;
+	private float hasteDuration = 10f;
+
+	public void SetIsHasted(float duration)
+	{
+		StopAllCoroutines();
+		hasteDuration = duration;
+		isHasted = true;
+	}
+
+	IEnumerator RemoveHaste()
+	{
+		yield return new WaitForSeconds(hasteDuration);
+		moveSpeedBuffModifier = 1f;
+	}
+
 	// Use this for initialization
 	void Start()
 	{
@@ -28,6 +43,10 @@ public class AggressivePlayerMovement : MonoBehaviour {
 	{
 		Move ();
 		ComputeTargetAngle ();
+		if(isHasted)
+		{
+			StartCoroutine("RemoveHaste");
+		}
 	}
 
 	void Move()	{
