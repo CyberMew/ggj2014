@@ -10,7 +10,13 @@ TagManager:
   - Powerup
   - Player
   - PlayerProjectile
+  - PlayerShield
+  - EnemyShield
+  - WipeScreen
+  - WinLoseManager
   - PlayerBody
+  - 
+  - EnemyProjectile
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -29,9 +35,9 @@ TagManager:
   User Layer 14: EnemyProjectile
   User Layer 15: Buff
   User Layer 16: Ditto
-  User Layer 17: PlayerBody
-  User Layer 18: 
-  User Layer 19: 
+  User Layer 17: PlayerShield
+  User Layer 18: WipeScreen
+  User Layer 19: PlayerBody
   User Layer 20: 
   User Layer 21: 
   User Layer 22: 
