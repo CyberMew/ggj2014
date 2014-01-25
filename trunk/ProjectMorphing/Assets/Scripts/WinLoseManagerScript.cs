@@ -12,7 +12,7 @@ public class WinLoseManagerScript : MonoBehaviour {
 
 	// reduce an object count
 	// works for either collecting collectables or killing enemies
-	void ReduceObjectCount()
+	public void ReduceObjectCount()
 	{
 		--objectsToSpawn;
 
