@@ -7,8 +7,10 @@ public class DestroyPlayerOnContact : MonoBehaviour
 {
 	void OnTriggerEnter(Collider other)
 	{
+		Debug.Log("fuck dis");
 		if(other.tag == "Player")
 		{
+			Debug.Log("fuck dis again");
 			Destroy(other.gameObject);
 		}
 	}
