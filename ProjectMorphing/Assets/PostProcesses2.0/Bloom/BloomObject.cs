@@ -5,5 +5,6 @@ public class BloomObject : MonoBehaviour
 {
 	
 	public Color BloomColor = Color.white;
-	
+
+
 }
