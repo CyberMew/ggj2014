@@ -430,6 +430,7 @@ GameObject:
   - 114: {fileID: 1332589440}
   - 114: {fileID: 1332589439}
   - 58: {fileID: 1332589438}
+  - 50: {fileID: 1332589443}
   m_Layer: 9
   m_Name: AggressivePlayer
   m_TagString: Player
@@ -520,6 +521,22 @@ Transform:
   m_Children:
   - {fileID: 506718997}
   m_Father: {fileID: 0}
+--- !u!50 &1332589443
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5000000, guid: fe8a8d47aecf4544497e7efe9921246b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1146352872}
+  m_GameObject: {fileID: 1332589437}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_FixedAngle: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1485326512
 Prefab:
   m_ObjectHideFlags: 0
