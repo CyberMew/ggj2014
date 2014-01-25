@@ -4,11 +4,14 @@ using System.Collections;
 public class EnemyShooter : MonoBehaviour {
 
 	public GameObject enemyProjectile;
-	public int splitCount;
+	public int splitCount = 6;
+	public float shotForce = 300f;
+	public float shotPositionOffset = 0.3f;
+	public float shotTimeInterval = 1f;
 
 	// Use this for initialization
 	void Start () {
-		InvokeRepeating ("Shoot", 0.5f, 0.5f);
+		InvokeRepeating ("Shoot", 0.5f, shotTimeInterval);
 	}
 	
 	// Update is called once per frame
@@ -28,9 +31,9 @@ public class EnemyShooter : MonoBehaviour {
 			child.transform.localPosition = this.transform.localPosition;
 			Vector3 pos = new Vector3(x, y, 0).normalized;
 			
-			child.transform.position += pos;
+			child.transform.position += pos * shotPositionOffset;
 			
-			child.rigidbody2D.AddForce ( (child.transform.position - transform.position) * 500f);
+			child.rigidbody2D.AddForce ( (child.transform.position - transform.position) * shotForce);
 		}
 	}
 

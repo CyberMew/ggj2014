@@ -9,7 +9,7 @@ public class PatrolScript : MonoBehaviour
 	private Vector2 target1, target2;
 	private Vector2 disp;
 	private bool isFlip = false;
-	public float speed;
+	public float speed  = 2.5f;
 
 	void Start()
 	{

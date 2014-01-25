@@ -16,28 +16,12 @@ public class EnemySuicide : MonoBehaviour {
 
 		if(player)
 		{
-			Vector3 dir = player.transform.position - transform.position;
+			Vector2 dir;
+			dir.x = player.transform.position.x - transform.position.x;
+			dir.y = player.transform.position.y - transform.position.y;
 			dir.Normalize ();
 			transform.Translate (dir * Time.deltaTime);
 		}
 	}
 
-	void OnCollisionEnter(Collision collision) 
-	{
-		//EnemyHealth script = GetComponent<EnemyHealth>();
-		//
-		//if(collision.gameObject.CompareTag("WallV") || collision.gameObject.CompareTag ("WallH") )
-		//{
-		//	gameObject.SendMessage("Hit", script.GetHP());
-		//	var particle = Instantiate(hitParticle, transform.position, transform.rotation);
-		//	Destroy (particle, 3);
-		//}
-		//else if(player == collision.gameObject)
-		//{			
-		//	gameObject.SendMessage("Hit", script.GetHP());
-		//	player.SendMessage ("Hit", damage);
-		//	var particle = Instantiate(hitParticle, transform.position, transform.rotation);
-		//	Destroy (particle, 3);
-		//}
-	}
 }
