@@ -56,6 +56,7 @@ MonoBehaviour:
   - .5
   sqDistFromPlayer: 5
   sqDistFromObstacle: 2
+  sqDistFromCollectible: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
