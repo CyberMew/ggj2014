@@ -20,7 +20,7 @@ public class HybridPlayerMovement : MonoBehaviour {
 		{
 			size = circleCollider.radius;
 		}
-		size *= 0.7f;
+		size *= 1.2f;
 
 		UpdateMinMaxAngle();
 	}
