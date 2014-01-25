@@ -25,7 +25,7 @@ public class DestroyBodySegment : MonoBehaviour
 			pbc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBodyController>();
 			if(pbc)
 			{
-				pbc.DestroySpecificBody(other);
+				pbc.DestroySpecificBody(other.gameObject);
 			}
 			else
 			{
