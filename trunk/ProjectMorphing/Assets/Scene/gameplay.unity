@@ -430,7 +430,7 @@ GameObject:
   - 114: {fileID: 1332589440}
   - 114: {fileID: 1332589439}
   - 58: {fileID: 1332589438}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AggressivePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   - 58: {fileID: 5800000}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: AggressiveMeleeObject
   m_TagString: Player
   m_Icon: {fileID: 0}
