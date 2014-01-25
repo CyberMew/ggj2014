@@ -39,13 +39,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyArray:
-  - {fileID: 100000, guid: 9b986237b72deed48b8838c73b03db31, type: 2}
-  - {fileID: 100000, guid: fa914c22820bfb341b7e0d434c121f03, type: 2}
-  - {fileID: 100000, guid: f353d5bf265ef58409b11ab8679f2ad7, type: 2}
-  - {fileID: 100000, guid: 14363c257149d2d439de69effef09eb8, type: 2}
+  - {fileID: 100000, guid: 1ace8692afebc904bac2bb18ef5cd93f, type: 2}
+  - {fileID: 100000, guid: 5636c66d39e48ef47bd36034ce9f5e1c, type: 2}
+  - {fileID: 100000, guid: 104f44750a2c97442a770968201d48e9, type: 2}
+  - {fileID: 100000, guid: fdc3c71f0c8cf2d40bf9c73241514471, type: 2}
   buffArray:
-  - {fileID: 100000, guid: 951aa41039478f048b908d652a8aea17, type: 2}
-  - {fileID: 100000, guid: 1b1d6e87057343e44a37299579996f31, type: 2}
+  - {fileID: 100000, guid: e635dacbc9f7b8149bf8861d75853a0f, type: 2}
+  - {fileID: 100000, guid: 13c33cbc324d9c34881010a5dd06850d, type: 2}
   buffSpawnChanceArray:
   - .5
   - .5
