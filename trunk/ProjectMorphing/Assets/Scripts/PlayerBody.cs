@@ -14,7 +14,7 @@ public class PlayerBody : MonoBehaviour {
 	void Update () {
 		Vector3 oldPos = transform.position;
 		Vector3 tempVec = targetPos - oldPos;
-		tempVec *= 0.5f;
+		tempVec *= 0.6f;
 
 		transform.Translate(tempVec); 
 	}
@@ -26,7 +26,7 @@ public class PlayerBody : MonoBehaviour {
 
 		float len = tempVec.magnitude;
 
-		if(len > 0.9f)
+		if(len > 1.2f)
 		{
 			transform.position = newTargetPos;
 		}
