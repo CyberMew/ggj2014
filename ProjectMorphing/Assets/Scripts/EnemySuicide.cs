@@ -14,7 +14,6 @@ public class EnemySuicide : MonoBehaviour {
 	void Update () {
 		player = GameObject.FindGameObjectWithTag("Player");
 
-		Debug.Log(player);
 		if(player)
 		{
 			Vector3 dir = player.transform.position - transform.position;
