@@ -90,6 +90,7 @@ public class Pause : MonoBehaviour {
 			{
 				// Message was cancelled by clicking No (false) or was cancelled by keypress
 				isAskForConfirmation = false;
+				Event.current.Use();
 			}
 
 			// Then disable the GUI
@@ -116,31 +117,38 @@ public class Pause : MonoBehaviour {
 	{
 		float centerX = Screen.width * 0.5f;
 
-		Rect rect = new Rect(centerX, MySystem.sHEIGHT * 0.2f, 400f, 400f);
-		// Always Display normal buttons (Resume, Restart, Main Menu, Quit)
-		GUI.Box(rect, "Game Paused");
+		float boxWidth = 400f;
+		float boxHeight = 450f;
 
+
+		Rect rect = new Rect(centerX - boxWidth * 0.5f, 200f, boxWidth, boxHeight);
+		// Always Display normal buttons (Resume, Restart, Main Menu, Quit)
+		GUI.Box(rect, "\n\nGame Paused");
+
+		float buttonWidth = 160f;
+		float buttonHeight = 60f;
+		centerX = boxWidth * 0.5f - buttonWidth * 0.5f;
 		// Make all rect positions relative to the box's rect
 		GUI.BeginGroup(rect);
 		//	Start draw Resume button
-		if(GUI.Button(new Rect(0f, 0f, 100f, 20f), new GUIContent("Resume")))
+		if(GUI.Button(new Rect(centerX, 90f, buttonWidth, buttonHeight), new GUIContent("Resume")))
 		{
 			Destroy(this.gameObject);
 		}
 		//	Start draw Restart button
-		if(GUI.Button(new Rect(0f, 40f, 100f, 20f), new GUIContent("Restart the Level")))
+		if(GUI.Button(new Rect(centerX, 90f + buttonHeight + 20f, buttonWidth, buttonHeight), new GUIContent("Restart the Level")))
 		{
 			isAskForConfirmation = true;
 			eventResults = RESULTS.RESTART;
 		}
 		//	Start draw Main Menu button
-		if(GUI.Button(new Rect(0f, 80f, 100f, 20f), new GUIContent("Back to Menus")))
+		if(GUI.Button(new Rect(centerX, 90f + 2 * (buttonHeight + 20f), buttonWidth, buttonHeight), new GUIContent("Back to Menus")))
 		{
 			isAskForConfirmation = true;
 			eventResults = RESULTS.GOTOMENU;
 		}
 		//	Start draw Quit Game button
-		if(GUI.Button(new Rect(0f, 120f, 100f, 20f), new GUIContent("Terminate Game")))
+		if(GUI.Button(new Rect(centerX, 90f + 3 * (buttonHeight + 20f), buttonWidth, buttonHeight), new GUIContent("Terminate Game")))
 		{
 			isAskForConfirmation = true;
 			eventResults = RESULTS.QUITGAME;
@@ -153,20 +161,22 @@ public class Pause : MonoBehaviour {
 	{
 		bool isConfirmed = false;
 		float centerX = Screen.width * 0.5f;
-		
-		Rect rect = new Rect(centerX, MySystem.sHEIGHT * 0.2f, 400f, 400f);
+
+		float boxWidth = 400f;
+		float boxHeight = 440f;
+		Rect rect = new Rect(centerX - boxWidth * 0.5f, 200f, boxWidth, boxHeight);
 		// Always Display normal buttons (Resume, Restart, Main Menu, Quit)
 		GUI.Box(rect, "Are you sure you want to do this?");
 		
 		// Make all rect positions relative to the box's rect
 		GUI.BeginGroup(rect);
 		//	Start draw Resume button
-		if(GUI.Button(new Rect(0f, 0f, 100f, 20f), new GUIContent("Yes")))
+		if(GUI.Button(new Rect(boxWidth * 0.5f, 100f, 100f, 100f), new GUIContent("Yes")))
 		{
 			isConfirmed = true;
 		}
 		//	Start draw Restart button
-		if(GUI.Button(new Rect(0f, 40f, 100f, 20f), new GUIContent("No")))
+		if(GUI.Button(new Rect(boxWidth * 0.5f, 150f, 100f, 100f), new GUIContent("No")))
 		{
 			isConfirmed = true;
 		}
