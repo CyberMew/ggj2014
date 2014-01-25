@@ -39,21 +39,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectibleArray:
-  - {fileID: 100000, guid: 722e0885d93bb534da1ffa26a00baff3, type: 2}
-  - {fileID: 100000, guid: 60e4f03520dfaf8438e509cce0b480eb, type: 2}
-  - {fileID: 100000, guid: 435d2eb8549360340a701dde3c45a0e9, type: 2}
-  - {fileID: 100000, guid: 5af19fd84d6627c4eb47a8c812847ef3, type: 2}
+  - {fileID: 100000, guid: 434ebb882a2509a4ab942cfbb70ce51d, type: 2}
+  - {fileID: 100000, guid: 90eeb6769cccd5e42b4f75600ff876c8, type: 2}
+  - {fileID: 100000, guid: c7eb430178f12e94683701920bbc906b, type: 2}
+  - {fileID: 100000, guid: 84efddbae4257cb469fa40f6de0c8092, type: 2}
   collectibleSpawnChanceArray:
-  - .25
-  - .25
-  - .25
-  - .25
+  - .349999994
+  - .349999994
+  - .200000003
+  - .100000001
   obstacleArray:
-  - {fileID: 100000, guid: b5bfcf3abeedd66498d777611055ac0e, type: 2}
-  - {fileID: 100000, guid: 5cdf5a104fdd79b4799a1d4b16fb7afc, type: 2}
+  - {fileID: 100000, guid: 1b315f79370e9944cbdf90a974f84434, type: 2}
+  - {fileID: 100000, guid: e00f6688bcc6d0a4790c75e3d5fe1cff, type: 2}
   obstacleSpawnChanceArray:
   - .5
   - .5
+  sqDistFromPlayer: 5
+  sqDistFromObstacle: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
