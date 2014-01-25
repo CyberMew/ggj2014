@@ -39,15 +39,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyArray:
-  - {fileID: 100000, guid: fa914c22820bfb341b7e0d434c121f03, type: 2}
-  - {fileID: 100000, guid: f353d5bf265ef58409b11ab8679f2ad7, type: 2}
-  - {fileID: 100000, guid: 491e2bd3d9c03c04d823c797b16cdce5, type: 2}
+  - {fileID: 100000, guid: 1ace8692afebc904bac2bb18ef5cd93f, type: 2}
+  - {fileID: 100000, guid: 104f44750a2c97442a770968201d48e9, type: 2}
+  - {fileID: 100000, guid: 1136a4150a5c341449b81b60470f71a2, type: 2}
   buffArray:
-  - {fileID: 100000, guid: 2243ef8524b66f843ab0a98a913934ce, type: 2}
-  - {fileID: 100000, guid: 7bfde8640ebc2fb449a26a31dbc96864, type: 2}
-  - {fileID: 100000, guid: ce63f22e370887b45936250f485cea5b, type: 2}
+  - {fileID: 100000, guid: 903956a4e7795154ab8373a0534d9e37, type: 2}
+  - {fileID: 100000, guid: e5039b2035c90bd4eb368166cbfaa2bd, type: 2}
+  - {fileID: 100000, guid: 29660dd82c0a0aa42b262509614a7472, type: 2}
   buffSpawnChanceArray: []
-  initialBuffDelay: 5
+  initialBuffDelay: 3
+  minBuffDelay: 1
+  maxBuffDelay: 3
+  sqDistFromPlayer: 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
