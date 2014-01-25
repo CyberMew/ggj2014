@@ -3,6 +3,20 @@ using System.Collections;
 
 public class ModePicker : MonoBehaviour 
 {
+
+
+
+
+	public enum GAME_MODE
+	{
+		IDLE,
+		SHOOTER,
+		COLLECTOR,
+		HYBIRD
+	}
+	public GAME_MODE m_GameMode = GAME_MODE.IDLE;
+
+
 	private int shooter, collector, total;
 	public GameObject hybridSpawnManager, collectorSpawnManager, shooterSpawnManager;
 	private Vector3 vec3 = new Vector3();
@@ -70,6 +84,13 @@ public class ModePicker : MonoBehaviour
 	}
 	void Update()
 	{
+
+		if(Input.GetKeyDown(KeyCode.T))
+		{ 
+			++m_GameMode;
+			if(m_GameMode == GAME_MODE.HYBIRD+1)
+				m_GameMode = GAME_MODE.IDLE;
+		}
 		switch(total)
 		{
 			case 0:
@@ -96,16 +117,19 @@ public class ModePicker : MonoBehaviour
 				if(shooter == collector)
 				{
 					CreateHybrid();
+					m_GameMode = GAME_MODE.HYBIRD;
 				}
 				// start shooter
 				else if(shooter == total)
 				{
 					CreateShooter();
+					m_GameMode = GAME_MODE.SHOOTER;
 				}
 				// start collector
 				else
 				{
 					CreateCollector();
+					m_GameMode = GAME_MODE.COLLECTOR;
 				}
 				break;
 			}
@@ -128,4 +152,9 @@ public class ModePicker : MonoBehaviour
 		++collector;
 		++total;
 	}
+
+	public GAME_MODE GetGameMode() {return m_GameMode;}
+	public void SetGameMode( GAME_MODE m) { m_GameMode = m; }
+
+
 }
