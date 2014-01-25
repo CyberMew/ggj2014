@@ -47,9 +47,12 @@ MonoBehaviour:
   - {fileID: 100000, guid: 951aa41039478f048b908d652a8aea17, type: 2}
   - {fileID: 100000, guid: 1b1d6e87057343e44a37299579996f31, type: 2}
   buffSpawnChanceArray:
-  - .699999988
-  - .300000012
-  initialBuffDelay: 5
+  - .5
+  - .5
+  initialBuffDelay: 3
+  minBuffDelay: 1
+  maxBuffDelay: 3
+  minSqDistFromPlayer: 5
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
