@@ -8,9 +8,19 @@ public class AggressivePlayerMovement : MonoBehaviour {
 	public float angleModifier = 0.5f;
 	public float angleInterpolatingInterval = 0.016f;
 	public float targetAngle = 0f;
-
+	private float size = 1f;
+	
+	// Use this for initialization
 	void Start()
 	{
+		CircleCollider2D circleCollider = gameObject.GetComponent<CircleCollider2D>();
+		
+		if(circleCollider)
+		{
+			size = circleCollider.radius;
+		}
+		size *= 1.2f;
+
 		InvokeRepeating("InterpolateToTargetAngle", angleInterpolatingInterval, angleInterpolatingInterval);
 	}
 
@@ -27,6 +37,43 @@ public class AggressivePlayerMovement : MonoBehaviour {
 		{
 			moveVec /= len;
 			moveVec *= Time.deltaTime * baseMoveSpeed * moveSpeedBuffModifier;
+
+			Vector2 position = transform.position;
+
+			// move left
+			if(moveVec.x < 0f)
+			{
+				if(position.x - size <= MySystem.edgeLeft)
+				{
+					moveVec.x = 0f;
+				}
+			}
+			// move right
+			else
+			{
+				if(position.x + size>= MySystem.edgeRight)
+				{
+					moveVec.x = 0f;
+				}				
+			}
+
+			// move down
+			if(moveVec.y < 0f)
+			{
+				if(position.y - size <= MySystem.edgeBottom)
+				{
+					moveVec.y = 0f;
+				}				
+			}
+			// move up
+			else
+			{
+				if(position.y + size >= MySystem.edgeTop)
+				{
+					moveVec.y = 0f;
+				}					
+			}
+
 			transform.Translate(moveVec.x, moveVec.y, 0f, Space.World);
 		}
 	}
