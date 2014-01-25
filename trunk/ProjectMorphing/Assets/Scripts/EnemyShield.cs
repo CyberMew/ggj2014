@@ -20,7 +20,6 @@ public class EnemyShield : MonoBehaviour
 		if(currentShieldhealth != totalShieldHealth)
 		{
 			++currentShieldhealth;
-			Debug.Log("fk dis shit");
 
 			yield return new WaitForSeconds(0f);
 		}
@@ -32,7 +31,6 @@ public class EnemyShield : MonoBehaviour
 	{
 		StopAllCoroutines();
 		--currentShieldhealth;
-		Debug.Log(currentShieldhealth);
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
