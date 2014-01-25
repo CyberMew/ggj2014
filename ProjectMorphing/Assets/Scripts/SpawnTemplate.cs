@@ -14,7 +14,7 @@ class SpawnTemplate
  * 
  * 
  *-----------------------------------------------------------------------------------------------*/
-	static public void SpawnObject(ref GameObject masterGameObject, float sqrMagFromPlayer = 5f)
+	static public void SpawnObject(ref GameObject masterGameObject, float sqrMagFromPlayer)
 	{
 		//Vector3 worldDimension = MySystem.ScreenToWorldV3 (MySystem.sWIDTH, MySystem.sHEIGHT);
 		//worldDimension /= 2f;
@@ -50,7 +50,7 @@ class SpawnTemplate
  * 
  * 
  *-----------------------------------------------------------------------------------------------*/
-	static public void SpawnObject(ref GameObject[] masterGameObjectArray, ref float[] spawnProbabilityArray, float sqrMagFromPlayer = 5f)
+	static public void SpawnObject(ref GameObject[] masterGameObjectArray, ref float[] spawnProbabilityArray, float sqrMagFromPlayer)
 	{
 
 		Vector2 screenPosition = new Vector2(Random.Range(MySystem.edgeLeft,MySystem.edgeRight), Random.Range(MySystem.edgeBottom,MySystem.edgeTop));
