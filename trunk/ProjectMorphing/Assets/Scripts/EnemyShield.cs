@@ -1,44 +1,65 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyShield : MonoBehaviour {
+public class EnemyShield : MonoBehaviour 
+{
+	public int totalShieldHealth = 3;
+	private int currentShieldhealth;
+	public float shieldRegenInSecond = 1f;
+	private SpriteRenderer spriteRenderer;
 
-	public GameObject shield;
-
-	private GameObject player;
-	private Vector3 dir;
-	// Use this for initialization
-	void Start () {
+	void Start()
+	{
+		currentShieldhealth = totalShieldHealth;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		player = GameObject.FindGameObjectWithTag("Player");
 
-		if(player)
+	IEnumerator RegenShield()
+	{
+		yield return new WaitForSeconds(shieldRegenInSecond);
+
+		if(currentShieldhealth != totalShieldHealth)
 		{
-			dir = player.transform.position - transform.position;
-			dir.Normalize ();
+			++currentShieldhealth;
+			Debug.Log("fk dis shit");
+
+			yield return new WaitForSeconds(0f);
 		}
 
-		UpdateShield ();
+		yield return new WaitForSeconds(0f);
+	}
 
-		if(transform.childCount == 0)
+	void DamageShield()
+	{
+		StopAllCoroutines();
+		--currentShieldhealth;
+		Debug.Log(currentShieldhealth);
+	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		if(currentShieldhealth == 0)
 		{
-			Invoke ("ShieldUp", 2f);
+			return;
+		}
+		if(other.tag == "Player")
+		{
+			Destroy (gameObject);
+			Destroy(other.gameObject);
+		}
+		else if(other.tag == "PlayerProjectile")
+		{
+			Destroy(other.gameObject);
+			DamageShield();
 		}
 	}
 
-	void ShieldUp() {
-		CancelInvoke ();
-
-		GameObject child = Instantiate (shield) as GameObject;
-		child.transform.parent = this.transform;
-		child.transform.localPosition = transform.position + dir;
-	}
-
-	void UpdateShield() {
-		if(transform.childCount != 0)
-			transform.GetChild (0).localPosition = transform.position + dir;
+	void Update()
+	{
+		StartCoroutine("RegenShield");
+		spriteRenderer = GetComponent<SpriteRenderer>();
+		if(spriteRenderer)
+		{
+			spriteRenderer.color = new Color(1f, 1f, 1f, (float)currentShieldhealth / totalShieldHealth);
+		}
 	}
 }
