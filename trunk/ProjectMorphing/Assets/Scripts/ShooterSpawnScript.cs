@@ -42,7 +42,7 @@ public class ShooterSpawnScript : MonoBehaviour {
  *-------------------------------------------------------------------------------------------------*/
 	void SpawnEnemy(int index)
 	{
-		SpawnTemplate.SpawnObject (enemyArray [index], minSqDistFromPlayer);
+		SpawnTemplate.SpawnObject (ref enemyArray [index], minSqDistFromPlayer);
 	}
 
 	/*------------------------------------------------------------------------------------------------
