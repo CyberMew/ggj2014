@@ -11,9 +11,11 @@ public class AggressivePlayerAttack : MonoBehaviour {
 	public GameObject bulletObject = null;
 	public float bulletFrontOffset = 0.5f;
 
+	public float baseBulletSpeed = 1f;
+
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
@@ -56,7 +58,13 @@ public class AggressivePlayerAttack : MonoBehaviour {
 		
 		// else if any condition fails we just do range attack
 		Vector4 vec = (transform.localToWorldMatrix * new Vector4(bulletFrontOffset, 0f, 0f, 0f));
-		Instantiate(bulletObject, transform.position + new Vector3(vec.x, vec.y, vec.z), Quaternion.identity);
+		GameObject myBullet = Instantiate(bulletObject, transform.position + new Vector3(vec.x, vec.y, vec.z), transform.rotation) as GameObject;
+
+		FlyForward flyForwardComp = myBullet.GetComponent<FlyForward>();
+		if(flyForwardComp)
+		{
+			flyForwardComp.shootingVector = new Vector3(baseBulletSpeed * cooldownBuffModifier * cooldownUpgradeModifier, 0f, 0f);
+		}
   }
   
   void resetCanAttack()
