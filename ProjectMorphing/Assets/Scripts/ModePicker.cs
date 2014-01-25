@@ -75,6 +75,8 @@ public class ModePicker : MonoBehaviour
 	private bool modeChosen = false;
 	public GameObject initialPlayer;
 	private GameObject currPlayer;
+
+	private StatsManager stats;
 	
 	void Start()
 	{
@@ -83,9 +85,11 @@ public class ModePicker : MonoBehaviour
 		//		{
 		//			Debug.Log ("Player can't be found!");
 		//		}
+		stats = GameObject.Find("StatsManager").GetComponent<StatsManager>();
 		currPlayer = Instantiate(initialPlayer, playerPos, Quaternion.identity) as GameObject;
 		Instantiate(dittoObject, dittoPos1, Quaternion.identity);
 		Instantiate(dittoObject, dittoPos2, Quaternion.identity);
+
 	}
 	
 	void CreateHybrid()
@@ -93,18 +97,21 @@ public class ModePicker : MonoBehaviour
 		Instantiate(hybridPlayer, currPlayer.transform.position, currPlayer.transform.rotation);
 		Destroy(currPlayer);
 		Instantiate(hybridSpawnManager, vec3, quat);
+		stats.SetIncrementGameModeStatsByOne (StatsManager.MODES.HYBRID);
 	}
 	void CreateShooter()
 	{
 		Instantiate(aggresivePlayer, currPlayer.transform.position, currPlayer.transform.rotation);
 		Destroy(currPlayer);
 		Instantiate(shooterSpawnManager, vec3, quat);
+		stats.SetIncrementGameModeStatsByOne(StatsManager.MODES.SHOOTER);
 	}
 	void CreateCollector()
 	{
 		Instantiate(collectorPlayer, currPlayer.transform.position, currPlayer.transform.rotation);
 		Destroy(currPlayer);
 		Instantiate(collectorSpawnManager, vec3, quat);
+		stats.SetIncrementGameModeStatsByOne (StatsManager.MODES.COLLECTIBLE);
 	}
 	void Update()
 	{
