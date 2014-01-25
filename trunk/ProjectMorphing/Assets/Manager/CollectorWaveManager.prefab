@@ -9,9 +9,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
-  m_Layer: 11
-  m_Name: WinLoseManager
-  m_TagString: WinLoseManager
+  m_Layer: 0
+  m_Name: CollectorWaveManager
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,10 +35,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f10ed3a876c6cd46b898f18ae9794bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 712a7a3a7a591b2479ed54a7e40c1165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialObjectCount: 150
+  masterCollectorSpawnManager: {fileID: 100000, guid: 2b67accbe6f210f47ae216165454905c,
+    type: 2}
+  initialObstacleCount: 5
+  ratioArray:
+  - obstacleCount: 7
+    objectCount: 130
+  - obstacleCount: 9
+    objectCount: 110
+  - obstacleCount: 11
+    objectCount: 90
+  - obstacleCount: 15
+    objectCount: 60
+  - obstacleCount: 20
+    objectCount: 30
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
