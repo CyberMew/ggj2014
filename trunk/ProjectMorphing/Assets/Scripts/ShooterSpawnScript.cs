@@ -4,55 +4,55 @@ using System.Collections;
 public class ShooterSpawnScript : MonoBehaviour {
 	
 	public GameObject[] enemyArray;
-	//public float[] enemySpawnChanceArray;
+
 	public GameObject[] buffArray;
 	public float[] buffSpawnChanceArray;
 
 	public float initialBuffDelay;
-	private float delayBeforeBuffSpawns;
+	public float minBuffDelay;
+	public float maxBuffDelay;
 
-	// Use this for initialization
+	public float minSqDistFromPlayer;
+
+	/*------------------------------------------------------------------------------------------------
+ * 	Start.
+ * 
+ * 
+ *-----------------------------------------------------------------------------------------------*/
 	void Start () {
 	
-		// check enemy spawn chances
-//		float totalPercentage = 0.0f;
-//		for (int i = 0; i < enemySpawnChanceArray.Length; ++i)
-//			totalPercentage += enemySpawnChanceArray[i];
-//		
-//		if(totalPercentage > 1.0f)
-//			Debug.Log ("ShooterSpawnScript::Start() - total combined percentage for enemy spawn chance exceeds 1!");
-//		else if(totalPercentage < 1.0f)
-//			Debug.Log ("ShooterSpawnScript::Start() - total combined percentage for enemy spawn chance is less than 1!");
-
-
 		// check buff spawn chances
 		float totalBuffPercentage = 0.0f;
 		for (int i = 0; i < buffSpawnChanceArray.Length; ++i)
 			totalBuffPercentage += buffSpawnChanceArray[i];
 		
 		if(totalBuffPercentage > 1.0f)
-			Debug.Log ("ShooterSpawnScript::Start() - total combined percentage for buff spawn chance exceeds 1!");
+			Debug.LogError ("ShooterSpawnScript::Start() - total combined percentage for buff spawn chance exceeds 1!");
 		else if(totalBuffPercentage < 1.0f)
-			Debug.Log ("ShooterSpawnScript::Start() - total combined percentage for buff spawn chance is less than 1!");
-
-
-		// give an initial delay before buff spawns
-		delayBeforeBuffSpawns = initialBuffDelay;
+			Debug.LogError ("ShooterSpawnScript::Start() - total combined percentage for buff spawn chance is less than 1!");
 
 		// start the buff spawning cycle
 		StartCoroutine (SpawnBuffIfApplicable ());
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	/*------------------------------------------------------------------------------------------------
+ * 	Spawn an enemy.
+ * 
+ * 
+ *-------------------------------------------------------------------------------------------------*/
+	void SpawnEnemy(int index)
+	{
+		SpawnTemplate.SpawnObject (enemyArray [index], minSqDistFromPlayer);
 	}
 
-
-	// spawn a buff if applicable
+	/*------------------------------------------------------------------------------------------------
+ * 	Spawn a buff if applicable.
+ * 
+ * 
+ *-------------------------------------------------------------------------------------------------*/
 	IEnumerator SpawnBuffIfApplicable()
 	{
-		yield return new WaitForSeconds (delayBeforeBuffSpawns);
+		yield return new WaitForSeconds (initialBuffDelay);
 
 		while (true)
 		{
@@ -61,78 +61,41 @@ public class ShooterSpawnScript : MonoBehaviour {
 			int buffIndex = 0;
 			float testValue = 0.0f;
 			
-			while (testValue <= randFloat)
+			for(; buffIndex < buffSpawnChanceArray.Length; ++buffIndex)
 			{
 				testValue += buffSpawnChanceArray[buffIndex];
-				++buffIndex;
+
+				if(testValue >= randFloat)
+					break;
 			}
 
 			// spawn a new position for the buff that is not colliding with the player
 			// can be colliding with enemy
-			Vector2 spawnPosition = new Vector2(0,0);
+			Vector2 screenPosition = new Vector2(Random.Range(MySystem.edgeLeft,MySystem.edgeRight), Random.Range(MySystem.edgeBottom,MySystem.edgeTop));
+			Vector3 spawnPosition = new Vector3(screenPosition.x, screenPosition.y, 0f);
+			GameObject player = GameObject.FindGameObjectWithTag ("Player");
+
+			if (player == null)
+				Debug.LogError  ("ShooterSpawnScript::SpawnBuffIfApplicable - player can't be found!");
+
 			bool isLegalPosition = false;
 
 			while(!isLegalPosition)
 			{
-				// check for collision with player object //////////////////////////////////////////////////////////////////////////////////
-				isLegalPosition = true;
+				Vector3 distanceVector = spawnPosition - player.transform.position;
+				if(distanceVector.sqrMagnitude > minSqDistFromPlayer)
+					isLegalPosition = true;
+				else
+					spawnPosition = new Vector2(Random.Range(MySystem.edgeLeft,MySystem.edgeRight), Random.Range(MySystem.edgeBottom,MySystem.edgeTop));
 			}
 
 			// create the buff
 			Instantiate(buffArray[buffIndex], spawnPosition, Quaternion.identity);
 
 			// generate new wait time
-			delayBeforeBuffSpawns = Random.Range (0.0f, delayBeforeBuffSpawns);
-			yield return new WaitForSeconds (delayBeforeBuffSpawns);
+			yield return new WaitForSeconds (Random.Range (minBuffDelay, maxBuffDelay));
 		}
 
 	}
-
-	// spawn an enemy based on the index given
-	void SpawnEnemy(int enemyIndex)
-	{
-		Vector2 spawnPosition = new Vector2(0,0);
-				
-		// randomly find a position to spawn the collectable
-		// if collectable is colliding with anything, redo
-		bool isLegalPosition = false;
-		while (!isLegalPosition) 
-		{
-			// check collision //////////////////////////////////////////////////////////////////////////////////////////////////////////
-			isLegalPosition = true;
-		}
-		
-		// spawn the object
-		Instantiate (enemyArray[enemyIndex], spawnPosition, Quaternion.identity);
-	}
-
-
-
-//	void SpawnEnemy()
-//	{
-//		Vector2 spawnPosition = new Vector2(0,0);
-//		
-//		// randomly select one of the enemies to spawn
-//		float randFloat = Random.Range (0.0f, 1.0f);
-//		float testValue = 0.0f;
-//		int spawnEnemyIndex = 0;
-//		
-//		while (testValue <= randFloat)
-//		{
-//			testValue += enemySpawnChanceArray[spawnEnemyIndex];
-//			++spawnEnemyIndex;
-//		}
-//
-//		// randomly find a position to spawn the collectable
-//		// if collectable is colliding with anything, redo
-//		bool isLegalPosition = false;
-//		while (!isLegalPosition) 
-//		{
-//			// check collision //////////////////////////////////////////////////////////////////////////////////////////////////////////
-//			isLegalPosition = true;
-//		}
-//		
-//		// spawn the object
-//		Instantiate (enemyArray [spawnEnemyIndex], spawnPosition, Quaternion.identity);
-//	}
+	
 }
