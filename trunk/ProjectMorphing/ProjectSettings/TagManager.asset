@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Powerup
   - Player
+  - PlayerProjectile
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -23,10 +24,10 @@ TagManager:
   User Layer 10: Enemy
   User Layer 11: Manager
   User Layer 12: Camera
-  User Layer 13: 
-  User Layer 14: 
-  User Layer 15: 
-  User Layer 16: 
+  User Layer 13: PlayerProjectile
+  User Layer 14: EnemyProjectile
+  User Layer 15: Buff
+  User Layer 16: Ditto
   User Layer 17: 
   User Layer 18: 
   User Layer 19: 
