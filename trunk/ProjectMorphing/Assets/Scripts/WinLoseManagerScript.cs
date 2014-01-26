@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WinLoseManagerScript : MonoBehaviour {
 
-	public int InitialObjectCount = 200;
+	public int InitialObjectCount = 150;
 	public GameObject DisplayStatsObj;
 
 	private int currObjectCount;

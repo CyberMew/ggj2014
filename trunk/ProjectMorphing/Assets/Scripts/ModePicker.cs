@@ -11,7 +11,7 @@ public class ModePicker : MonoBehaviour
 		HYBIRD
 	}
 	public GAME_MODE m_GameMode = GAME_MODE.IDLE;
-	private int shooter, collector, total;
+	public int shooter, collector, total;
 	public GameObject hybridSpawnManager, collectorSpawnManager, shooterSpawnManager;
 	private Vector3 vec3 = new Vector3();
 	private Quaternion quat = new Quaternion();
@@ -73,6 +73,7 @@ public class ModePicker : MonoBehaviour
 	public GameObject hybridPlayer;
 	//private GameObject currentPlayer;
 	private bool modeChosen = false;
+	private bool modeChosen2 = false;
 	public GameObject initialPlayer;
 	private GameObject currPlayer;
 
@@ -86,6 +87,7 @@ public class ModePicker : MonoBehaviour
 		//			Debug.Log ("Player can't be found!");
 		//		}
 		stats = GameObject.Find("StatsManager").GetComponent<StatsManager>();
+
 		currPlayer = Instantiate(initialPlayer, playerPos, Quaternion.identity) as GameObject;
 		Instantiate(dittoObject, dittoPos1, Quaternion.identity);
 		Instantiate(dittoObject, dittoPos2, Quaternion.identity);
@@ -119,6 +121,7 @@ public class ModePicker : MonoBehaviour
 		{
 			return;
 		}
+
 		if(Input.GetKeyDown(KeyCode.T))
 		{ 
 			++m_GameMode;
@@ -182,13 +185,16 @@ public class ModePicker : MonoBehaviour
 	{
 		++shooter;
 		++total;
+
+		Debug.Log ("shooter: " + shooter +"\ncollector: " + collector + "\ntotal: " + total);
 	}
 	
 	public void AddToCollector()
-	{
-		
+	{		
 		++collector;
 		++total;
+
+		Debug.Log ("shooter: " + shooter +"\ncollector: " + collector + "\ntotal: " + total);
 	}
 	
 	public GAME_MODE GetGameMode() {return m_GameMode;}
