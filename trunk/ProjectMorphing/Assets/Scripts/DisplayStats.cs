@@ -17,14 +17,14 @@ public class DisplayStats : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//stats = this.gameObject.AddComponent<StatsManager>();//new StatsManager();
-		
-	//	collectiblePlaysCached = stats.GetCurrentTotalModeStats(StatsManager.MODES.COLLECTIBLE);
-	//	shooterPlaysCached = stats.GetCurrentTotalModeStats(StatsManager.MODES.SHOOTER);
-		//hybridPlaysCached = stats.GetCurrentTotalModeStats(StatsManager.MODES.HYBRID);
-
-		collectiblePlaysCached = 500;
-		hybridPlaysCached = 500;
-		shooterPlaysCached = 500;
+		collectiblePlaysCached = 150;
+		hybridPlaysCached = 50;
+		shooterPlaysCached = 50;
+		/*
+		collectiblePlaysCached = stats.GetCurrentTotalModeStats(StatsManager.MODES.COLLECTIBLE);
+		shooterPlaysCached = stats.GetCurrentTotalModeStats(StatsManager.MODES.SHOOTER);
+		hybridPlaysCached = stats.GetCurrentTotalModeStats(StatsManager.MODES.HYBRID);
+*/
 		//stats.SetIncrementGameModeStatsByOne(StatsManager.MODES.COLLECTIBLE);
 
 		startTime = Time.realtimeSinceStartup;
@@ -40,14 +40,14 @@ public class DisplayStats : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Whe
-		if(Input.GetKeyDown(KeyCode.T))
+		/*if(Input.GetKeyDown(KeyCode.T))
 		{
 			//Debug.Log(stats.GetCurrentTotalModeStats(StatsManager.MODES.SHOOTER).ToString());
 			//Debug.Log(stats.GetCurrentTotalModeStats(StatsManager.MODES.COLLECTIBLE).ToString());
 			collectiblePlays = stats.GetCurrentTotalModeStats(StatsManager.MODES.COLLECTIBLE);
 			shooterPlays = stats.GetCurrentTotalModeStats(StatsManager.MODES.SHOOTER);
 			hybridPlays = stats.GetCurrentTotalModeStats(StatsManager.MODES.HYBRID);
-		}
+		}*/
 		// Animate the numbers
 		/*if(shooterPlays < shooterPlaysCached)
 		{
@@ -73,9 +73,28 @@ public class DisplayStats : MonoBehaviour {
 		{
 			hybridPlays = hybridPlaysCached;
 		}*/
-		shooterPlays = (int) Mathf.Lerp(0f, shooterPlaysCached, (Time.realtimeSinceStartup - startTime) / 1f);
-		collectiblePlays = (int) Mathf.Lerp(0f, collectiblePlaysCached, (Time.realtimeSinceStartup - startTime) / 2f);
-		hybridPlays = (int) Mathf.Lerp(0f, hybridPlaysCached, (Time.realtimeSinceStartup - startTime) / 3f);
+		/*float totalPlays = (shooterPlaysCached + collectiblePlaysCached + hybridPlaysCached);
+		float sp = shooterPlays / totalPlays;
+		float cp = collectiblePlays / totalPlays;
+		float hp = hybridPlays / totalPlays;*/
+		//Debug.Log(totalPlays.ToString());
+
+		float time = 0.004f * shooterPlays + 0.2f;
+		time = Mathf.Clamp(time, 1, 3);
+
+		float tmp = Mathf.Lerp(0f, (float)shooterPlaysCached, (Time.realtimeSinceStartup - startTime) / time /*/ sp*/);
+		//Debug.Log(tmp.ToString());
+		shooterPlays = Mathf.Min(shooterPlaysCached, Mathf.Max(0, (int)tmp));//(int) Mathf.Clamp((int) tmp, 0, shooterPlaysCached);
+		//Debug.Log(shooterPlays.ToString());
+		time = 0.004f * collectiblePlays + 0.2f;
+		time = Mathf.Clamp(time, 1, 3);
+		collectiblePlays = (int) Mathf.Lerp(0f, collectiblePlaysCached, (Time.realtimeSinceStartup - startTime) / time /*/ cp*/);
+		collectiblePlays = Mathf.Clamp(collectiblePlays, 0, collectiblePlaysCached);
+
+		time = 0.004f * hybridPlays + 0.2f;
+		time = Mathf.Clamp(time, 1, 3);
+		hybridPlays = (int) Mathf.Lerp(0f, hybridPlaysCached, (Time.realtimeSinceStartup - startTime) / time /*/ hp*/);
+		hybridPlays = Mathf.Clamp(hybridPlays, 0, hybridPlaysCached);
 	}
 
 	void OnGUI()
@@ -83,7 +102,6 @@ public class DisplayStats : MonoBehaviour {
 		// Backup the current matrix
 		Matrix4x4 oldMtx = GUI.matrix;
 		// Applying the matrix so that the buttons will scale in position and size accordingly to screen
-		float centerX = Screen.width * 0.5f;
 		GUIUtility.ScaleAroundPivot(new Vector2(Screen.width/MySystem.sWIDTH, Screen.height/MySystem.sHEIGHT), new Vector2(0f, 0f));
 
 		GUIStyle textTitle = new GUIStyle(GUI.skin.GetStyle("Label"));
@@ -123,5 +141,7 @@ public class DisplayStats : MonoBehaviour {
 		GUI.Label(new Rect(xPos, yPos + 200f, labelWidth, labelHeight), "111", textTitle);
 		GUI.Label(new Rect(xPos, yPos + 400f, labelWidth, labelHeight), "11", textTitle);
 */
+
+		GUI.matrix = oldMtx;
 	}
 }
