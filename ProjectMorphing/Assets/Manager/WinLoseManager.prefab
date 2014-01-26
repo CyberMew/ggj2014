@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialObjectCount: 150
+  DisplayStatsObj: {fileID: 100000, guid: 1460806ade898bd4fac88a64a4950225, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
