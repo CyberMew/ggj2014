@@ -51,7 +51,6 @@ public class AggressivePlayerAttack : MonoBehaviour {
 	{
 		if(canAttack)
 		{
-			audio.Play();
 			canAttack = false;
 			Invoke("resetCanAttack", baseCooldown * cooldownBuffModifier * cooldownUpgradeModifier);
 			DealDamage();
