@@ -32,7 +32,7 @@ public class WinLoseManagerScript : MonoBehaviour {
 
 	// win the game
 	// show a display
-	void WinGame()
+	public void WinGame()
 	{
 		Instantiate(DisplayStatsObj);
 		Debug.Log("Won, instantiated");
@@ -41,7 +41,7 @@ public class WinLoseManagerScript : MonoBehaviour {
 
 	// called when the player is killed
 	// show a display
-	void LoseGame()
+	public void LoseGame()
 	{
 		Instantiate(DisplayStatsObj);
 		Debug.Log("Lost, instantiated");
