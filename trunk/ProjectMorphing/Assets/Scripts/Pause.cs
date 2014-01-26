@@ -21,7 +21,7 @@ public class Pause : MonoBehaviour {
 
 	void Destroy()
 	{
-		Time.timeScale = 1f;
+		Time.timeScale = prevTimeScale;
 	}
 
 	private bool isAskForConfirmation = false;
