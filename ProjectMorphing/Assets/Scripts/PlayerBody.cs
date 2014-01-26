@@ -33,4 +33,12 @@ public class PlayerBody : MonoBehaviour {
 
 		targetPos = newTargetPos;
 	}
+
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		if(other.tag == "EnemyProjectile")
+		{
+			Destroy (other.gameObject);
+		}
+	}
 }
