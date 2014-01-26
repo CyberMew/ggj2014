@@ -9,7 +9,17 @@ public class DestroyPlayerOnContact : MonoBehaviour
 	{
 		if(other.tag == "Player")
 		{
+			StopAllCoroutines ();
 			Destroy(other.gameObject);
+			GameObject obj = GameObject.FindGameObjectWithTag ("WinLoseManager");
+			if(obj)
+			{
+				WinLoseManagerScript wls = obj.GetComponent<WinLoseManagerScript>();
+				if(wls)
+				{
+					wls.LoseGame ();
+				}
+			}
 			Destroy(gameObject);
 		}
 	}

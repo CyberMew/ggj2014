@@ -26,8 +26,10 @@ class SpawnTemplate
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");
 		
 		if (player == null)
-			Debug.LogError  ("SpawnTemplate::SpawnObject - player can't be found!");
-		
+		{
+			Debug.LogWarning ("SpawnTemplate::SpawnObject - player can't be found!");
+			return;
+		}
 		// randomly find a position to spawn the collectable
 		// if collectable is colliding with anything, redo
 		bool isLegalPosition = false;
@@ -58,7 +60,10 @@ class SpawnTemplate
 		GameObject player = GameObject.FindGameObjectWithTag ("Player");
 		
 		if (player == null)
-			Debug.LogError  ("SpawnTemplate::SpawnObject - player can't be found!");
+		{
+			Debug.LogWarning  ("SpawnTemplate::SpawnObject - player can't be found!");
+			return;
+		}
 		
 		// randomly find a position to spawn the collectable
 		// if collectable is colliding with player, redo

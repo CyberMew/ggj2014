@@ -60,13 +60,25 @@ public class HybridSpawnScript : MonoBehaviour {
 			GameObject player = GameObject.FindGameObjectWithTag ("Player");
 			
 			if (player == null)
-				Debug.LogError  ("ShooterSpawnScript::SpawnBuffIfApplicable - player can't be found!");
+			{
+				Debug.LogWarning  ("ShooterSpawnScript::SpawnBuffIfApplicable - player can't be found!");
+				StopCoroutine ("SpawnBuffIfApplicable");
+			}
 			
 			bool isLegalPosition = false;
 			
 			while(!isLegalPosition)
 			{
-				Vector3 distanceVector = spawnPosition - player.transform.position;
+				Vector3 pos;
+				if(player)
+				{
+					pos = player.transform.position;
+				}
+				else
+				{
+					pos = Vector3.zero;
+				}
+				Vector3 distanceVector = spawnPosition - pos;
 				if(distanceVector.sqrMagnitude > sqDistFromPlayer)
 					isLegalPosition = true;
 				else
