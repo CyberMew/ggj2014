@@ -67,7 +67,6 @@ public class ShooterWaveScript : MonoBehaviour {
 		StartCoroutine (WaveSpawning ());
 	}
 
-
 	IEnumerator WaveSpawning()
 	{
 		// wait the initial delay

@@ -28,8 +28,6 @@ public class WinLoseManagerScript : MonoBehaviour {
 	{
 		--currObjectCount;
 
-		if (currObjectCount <= 0)
-			WinGame ();
 	}
 
 	public int GetCurrObjectCount()
@@ -60,6 +58,15 @@ public class WinLoseManagerScript : MonoBehaviour {
 
 	void Update()
 	{
+		if (currObjectCount <= 0)
+		{
+			GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+			GameObject[] collectibles = GameObject.FindGameObjectsWithTag ("Buff");
+			
+			if(enemies.Length == 0 && collectibles.Length == 0)
+				WinGame ();
+		}
+
 		if(Input.GetKeyDown(KeyCode.R))
 		{
 			LoseGame();
