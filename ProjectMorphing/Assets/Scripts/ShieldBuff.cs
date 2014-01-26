@@ -20,7 +20,6 @@ public class ShieldBuff : MonoBehaviour {
 		if(other.tag == "Player")
 		{
 			ps = other.gameObject.transform.GetComponentInChildren<PlayerShield>();
-			Debug.Log (ps);
 			if(ps)
 			{
 				ps.ShieldsUp ();
