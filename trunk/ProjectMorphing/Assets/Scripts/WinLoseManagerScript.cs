@@ -4,7 +4,10 @@ using System.Collections;
 public class WinLoseManagerScript : MonoBehaviour {
 
 	public int InitialObjectCount = 200;
+	public GameObject DisplayStatsObj;
+
 	private int currObjectCount;
+
 
 	// Use this for initialization
 	void Start () {
@@ -31,12 +34,23 @@ public class WinLoseManagerScript : MonoBehaviour {
 	// show a display
 	void WinGame()
 	{
+		Instantiate(DisplayStatsObj);
+		Debug.Log("Won, instantiated");
 	}
 
 	// called when the player is killed
 	// show a display
 	void LoseGame()
 	{
+		Instantiate(DisplayStatsObj);
+		Debug.Log("Lost, instantiated");
 	}
 
+	void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.R))
+		{
+			LoseGame();
+		}
+	}
 }
