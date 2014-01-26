@@ -11,7 +11,8 @@ class MySystem : MonoBehaviour
 	public static float edgeTop;
 	public static float edgeBottom;
 	public static bool isDebugMode = true;
-	
+
+
 	// Use this for initialization
 	void Start () {
 		Camera mainCamera = Camera.main;
