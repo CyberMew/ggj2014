@@ -12,7 +12,7 @@ GameObject:
   - 212: {fileID: 21200000}
   - 58: {fileID: 5800000}
   - 50: {fileID: 5000000}
-  m_Layer: 10
+  m_Layer: 16
   m_Name: Ditto
   m_TagString: Ditto
   m_Icon: {fileID: 0}
