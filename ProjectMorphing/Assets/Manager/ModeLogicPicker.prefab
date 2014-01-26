@@ -39,10 +39,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GameMode: 0
-  hybridSpawnManager: {fileID: 100000, guid: da1622ec8540c224d905119c82c24b5b, type: 2}
-  collectorSpawnManager: {fileID: 100000, guid: 2b67accbe6f210f47ae216165454905c,
+  hybridSpawnManager: {fileID: 100000, guid: fc7fbdf0d59c271468bec0c3ed0d7b11, type: 2}
+  collectorSpawnManager: {fileID: 100000, guid: f9a4c2c6e5cc5344cb5333fd1facfb67,
     type: 2}
-  shooterSpawnManager: {fileID: 100000, guid: d6bd1099730503e42a1031244e835442, type: 2}
+  shooterSpawnManager: {fileID: 100000, guid: d380b7a6751c30f4f92e5ab1108e02e4, type: 2}
   dittoPos1: {x: -3, y: 2, z: 0}
   dittoPos2: {x: 3, y: 2, z: 0}
   playerPos: {x: 0, y: -2, z: 0}
