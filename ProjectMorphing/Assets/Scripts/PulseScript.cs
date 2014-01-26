@@ -33,7 +33,7 @@ public class PulseScript : MonoBehaviour {
 	}  
 
 	void Update() {
-		transform.localScale = Vector3.Lerp (transform.localScale, targetScale,speed * Time.deltaTime); //speed * Time.deltaTime);
+		transform.localScale = Vector3.Lerp (transform.localScale, targetScale, Time.deltaTime); //speed * Time.deltaTime);
 		
 				// If you don't want an eased scaling, replace the above line with the following line
 				//   and change speed to suit:
