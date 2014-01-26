@@ -69,7 +69,14 @@ public class WinLoseManagerScript : MonoBehaviour {
 
 		if(Input.GetKeyDown(KeyCode.P))
 		{
-			Application.LoadLevel(Application.loadedLevelName);
+			Object[] allObjects = FindObjectsOfTypeAll(typeof(GameObject));
+
+			foreach(Object obj in allObjects)
+			{
+				Destroy (obj);
+			}
+
+			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
 
