@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21200000}
   - 58: {fileID: 5800000}
   - 114: {fileID: 11400000}
-  m_Layer: 17
+  m_Layer: 19
   m_Name: PlayerBody
   m_TagString: PlayerBody
   m_Icon: {fileID: 0}
