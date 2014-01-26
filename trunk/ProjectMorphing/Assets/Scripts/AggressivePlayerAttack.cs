@@ -59,23 +59,6 @@ public class AggressivePlayerAttack : MonoBehaviour {
 
 	void DealDamage()
 	{
-		int childCount = transform.childCount;
-		
-		if(childCount > 0)
-		{
-			Transform childTransform = transform.GetChild(0);
-			AggressiveMelee aggroMeleeComp = childTransform.GetComponent<AggressiveMelee>();
-			
-			if(aggroMeleeComp)
-			{
-				if(aggroMeleeComp.Attack())
-				{
-					// NOTE: DANGER CODE, RETURNING STRAIGHT
-					return;
-				}
-			}
-		}
-		
 		// else if above checks fail, we just do range attack
 		Vector4 vec = (transform.localToWorldMatrix * new Vector4(bulletFrontOffset, 0f, 0f, 0f));
 		GameObject myBullet = Instantiate(bulletObject, transform.position + new Vector3(vec.x, vec.y, vec.z), transform.rotation) as GameObject;
