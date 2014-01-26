@@ -36,5 +36,4 @@ public class EnemyShooter : MonoBehaviour {
 			child.rigidbody2D.AddForce ( (child.transform.position - transform.position) * shotForce);
 		}
 	}
-
 }
