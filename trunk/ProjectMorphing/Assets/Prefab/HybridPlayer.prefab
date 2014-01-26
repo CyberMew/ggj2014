@@ -124,8 +124,8 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_SortingLayerID: 3396276983
-  m_Sprite: {fileID: 21300000, guid: 4faebb334a1478b4186cea34fa5cdf29, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7008c84ea5febe24f8565770f21c93c0, type: 3}
+  m_Color: {r: .356862754, g: .996078432, b: .65882355, a: 1}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

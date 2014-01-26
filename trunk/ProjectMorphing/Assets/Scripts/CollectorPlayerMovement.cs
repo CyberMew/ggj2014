@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CollectorPlayerMovement : MonoBehaviour {
 	
-	public float baseMoveSpeed = 15f;
+	public float baseMoveSpeed = 1f;
 	public float angleChangeSpeed = 25f;
 	public float maxTurnAngle = 5f;
 	
@@ -31,9 +31,7 @@ public class CollectorPlayerMovement : MonoBehaviour {
 	}
 	
 	void Move()	{
-		float moveSpeed = 3f;
-
-		moveSpeed *= Time.deltaTime * baseMoveSpeed;
+		float moveSpeed = Time.deltaTime * baseMoveSpeed;
 		
 		Vector3 moveVec = Vector3.Cross(transform.up, transform.forward);
 		
