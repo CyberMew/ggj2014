@@ -67,9 +67,9 @@ public class WinLoseManagerScript : MonoBehaviour {
 				WinGame ();
 		}
 
-		if(Input.GetKeyDown(KeyCode.R))
+		if(Input.GetKeyDown(KeyCode.P))
 		{
-			LoseGame();
+			Application.LoadLevel(Application.loadedLevelName);
 		}
 	}
 
@@ -90,7 +90,7 @@ public class WinLoseManagerScript : MonoBehaviour {
 		{
 			GUI.Label(new Rect(Screen.width - 500f, 100f, 500, 50f), "YOU LOSE", textTitle);
 		}
-		else
+		else if(gameState == GAMESTATE.WIN)
 		{
 			GUI.Label(new Rect(Screen.width - 500f, 100f, 500, 50f), "YOU WON", textTitle);
 		}
