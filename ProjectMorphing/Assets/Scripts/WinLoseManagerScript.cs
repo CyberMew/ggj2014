@@ -36,6 +36,7 @@ public class WinLoseManagerScript : MonoBehaviour {
 	{
 		Instantiate(DisplayStatsObj);
 		Debug.Log("Won, instantiated");
+		Time.timeScale = 0f;
 	}
 
 	// called when the player is killed
@@ -44,6 +45,7 @@ public class WinLoseManagerScript : MonoBehaviour {
 	{
 		Instantiate(DisplayStatsObj);
 		Debug.Log("Lost, instantiated");
+		Time.timeScale = 0f;
 	}
 
 	void Update()

@@ -90,12 +90,14 @@ public class DisplayStats : MonoBehaviour {
 		time = Mathf.Clamp(time, 1, 3);
 		collectiblePlays = (int) Mathf.Lerp(0f, collectiblePlaysCached, (Time.realtimeSinceStartup - startTime) / time /*/ cp*/);
 		collectiblePlays = Mathf.Clamp(collectiblePlays, 0, collectiblePlaysCached);
-
+		
 		time = 0.004f * hybridPlays + 0.2f;
 		time = Mathf.Clamp(time, 1, 3);
 		hybridPlays = (int) Mathf.Lerp(0f, hybridPlaysCached, (Time.realtimeSinceStartup - startTime) / time /*/ hp*/);
 		hybridPlays = Mathf.Clamp(hybridPlays, 0, hybridPlaysCached);
 	}
+
+	public Color txtClr = Color.black;
 
 	void OnGUI()
 	{
@@ -108,6 +110,11 @@ public class DisplayStats : MonoBehaviour {
 		textTitle.alignment = TextAnchor.MiddleLeft;
 		//textTitle.font = new Font("Times New Roman");
 		textTitle.fontSize = 40;
+		textTitle.fontStyle = FontStyle.Bold;
+		//GUI.contentColor = new Color(111,111,111,111);//Color.blue;
+		GUI.color = txtClr;//new Color(0,0,0,255);//Color.blue;
+		//renderer.material.color = new Color(155,155,155,155);
+
 		float labelHeight = 50f;
 		float labelWidth = 500f;
 
