@@ -127,14 +127,16 @@ public class DisplayStats : MonoBehaviour {
 		GUI.Label(new Rect(xPos, yPos + 400f, labelWidth, labelHeight), "Hybrid", textTitle);
 
 		textTitle.fontSize = 30;
+		textTitle.fontStyle = FontStyle.Normal;
 
 		xPos = 370f;
 		yPos = 165f;
-		GUI.Label(new Rect(xPos, yPos, labelWidth, labelHeight), "Plays", textTitle);
-		GUI.Label(new Rect(xPos, yPos + 200f, labelWidth, labelHeight), "Plays", textTitle);
-		GUI.Label(new Rect(xPos, yPos + 400f, labelWidth, labelHeight), "Plays", textTitle);
+		GUI.Label(new Rect(xPos, yPos, labelWidth, labelHeight), "Plays (WorldWide)", textTitle);
+		GUI.Label(new Rect(xPos, yPos + 200f, labelWidth, labelHeight), "Plays (WorldWide)", textTitle);
+		GUI.Label(new Rect(xPos, yPos + 400f, labelWidth, labelHeight), "Plays (WorldWide)", textTitle);
 
 		textTitle.alignment = TextAnchor.MiddleRight;
+		textTitle.fontStyle = FontStyle.Bold;
 		
 		xPos = 200f;
 		yPos = 165f;
