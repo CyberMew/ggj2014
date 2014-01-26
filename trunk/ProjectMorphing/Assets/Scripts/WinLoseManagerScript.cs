@@ -75,16 +75,19 @@ public class WinLoseManagerScript : MonoBehaviour {
 		
 		GUIStyle textTitle = new GUIStyle(GUI.skin.GetStyle("Label"));
 		textTitle.alignment = TextAnchor.MiddleCenter;
-		textTitle.fontSize = 30;
+		textTitle.fontSize = 40;
 		textTitle.fontStyle = FontStyle.Bold;
+		GUI.color = Color.black;
 
 		if(gameState == GAMESTATE.LOSE)
 		{
-			GUI.Label(new Rect(Screen.width * 0.5f - 250f, 200f, 500, 50f), "YOU LOSE");
+			GUI.Label(new Rect(Screen.width - 500f, 100f, 500, 50f), "YOU LOSE", textTitle);
 		}
 		else
 		{
-			GUI.Label(new Rect(Screen.width * 0.5f - 200f, 200f, 500, 50f), "YOU WON");
+			GUI.Label(new Rect(Screen.width - 500f, 100f, 500, 50f), "YOU WON", textTitle);
 		}
+
+
 	}
 }
