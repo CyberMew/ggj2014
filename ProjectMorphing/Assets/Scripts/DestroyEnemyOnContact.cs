@@ -7,7 +7,6 @@ public class DestroyEnemyOnContact : MonoBehaviour
 	{
 		if(other.tag == "Enemy")
 		{
-			//other.audio.Play();
 			Destroy(other.gameObject);
 			Destroy(gameObject);
 		}
