@@ -20,13 +20,11 @@ public class ShieldBuff : MonoBehaviour {
 		if(other.tag == "Player")
 		{
 			ps = other.gameObject.transform.GetComponentInChildren<PlayerShield>();
-			//obj.SetActive (true);
-			//ps = obj.GetComponent<PlayerShield>();
-			//ps = other.gameObject.transform.GetChild(1).GetComponent<PlayerShield>();//.enabled = true;
+			Debug.Log (ps);
 			if(ps)
 			{
-				Debug.Log("ohyeah");
 				ps.ShieldsUp ();
+				Destroy (this.gameObject);
 			}
 		}
 	}

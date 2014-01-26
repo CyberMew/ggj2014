@@ -9,8 +9,6 @@ public class PlayerShield : MonoBehaviour
 	private bool isShieldUp = false;
 	
 	void Start() {
-		gameObject.SetActive (isShieldUp);
-		curInvulTime = invulnerableTime;
 	}
 	
 	void Update() {
