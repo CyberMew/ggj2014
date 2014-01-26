@@ -17,14 +17,13 @@ public class DisplayStats : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//stats = this.gameObject.AddComponent<StatsManager>();//new StatsManager();
-		collectiblePlaysCached = 150;
-		hybridPlaysCached = 50;
-		shooterPlaysCached = 50;
-		/*
+//		collectiblePlaysCached = 150;
+//		hybridPlaysCached = 50;
+//		shooterPlaysCached = 50;
 		collectiblePlaysCached = stats.GetCurrentTotalModeStats(StatsManager.MODES.COLLECTIBLE);
 		shooterPlaysCached = stats.GetCurrentTotalModeStats(StatsManager.MODES.SHOOTER);
 		hybridPlaysCached = stats.GetCurrentTotalModeStats(StatsManager.MODES.HYBRID);
-*/
+
 		//stats.SetIncrementGameModeStatsByOne(StatsManager.MODES.COLLECTIBLE);
 
 		startTime = Time.realtimeSinceStartup;
