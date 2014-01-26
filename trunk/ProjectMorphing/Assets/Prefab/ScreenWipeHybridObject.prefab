@@ -77,10 +77,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 428f52c61a0b2474c915664c5e826d83, type: 3}
+  m_Script: {fileID: 11500000, guid: 9961276cb0831504b8f214e5e584074e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wipe: {fileID: 100000, guid: 84895749a5ef9454899d6cb806737ea6, type: 2}
+  wipe: {fileID: 100000, guid: deea40cd7538a4248bf46380734e0e06, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21200000}
   - 58: {fileID: 5800000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 19
   m_Name: PlayerBody
   m_TagString: PlayerBody
@@ -51,6 +52,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0da79f4d6fc1a48a43b61ff0881b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f662d099ec9544194090491e2f541d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionObj: {fileID: 100000, guid: 1231bfd9d8b5c3c4c9725da1b98c955d, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
